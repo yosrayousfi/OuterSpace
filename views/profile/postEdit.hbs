@@ -1,0 +1,9 @@
+{{#with post}}
+<form action="/profile/editPost/{{_id}}" method="post">
+  <label for="title">image: </label>
+  <input type="text" name="image" id="image" value="{{image}}">
+  <label for="description">Description: </label>
+  <input type="text" name="description" id="description" value="{{description}}">
+  <button type="submit">Edit a post</button>
+</form>
+{{/with}}

@@ -1,0 +1,27 @@
+{{#if istheLogged}}
+<a href="/profile/addPost">create new post</a>
+<a href="/users/list">list of other users</a>
+<a href="/profile/logout">Logout</a>
+<a href="/profile/search">search for friends</a>
+{{/if}}
+
+{{#with profileOwner}}
+<h1>profile of {{this.username}}</h1>
+<h1>his email is {{this.email}}</h1>
+{{/with}}
+
+{{#if postsList}}
+{{#with postsList}}
+{{#each this}}
+<label for="image">image </label>
+<p>{{image}}</p>
+<label for="description">Description: </label>
+<p>{{description}}</p>
+<label for="owner">Owner:</label>
+<p>{{this.owner.username}} </p>
+<a href="/profile/posts/details/{{_id}}">details</a>
+{{/each}}
+{{/with}}
+{{else}}
+<p>no posts yet</p>
+{{/if}}

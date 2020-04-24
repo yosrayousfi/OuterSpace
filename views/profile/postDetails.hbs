@@ -1,0 +1,25 @@
+<h1>post details</h1>
+<label for="image">image </label>
+<p>{{post.image}}</p>
+<label for="description">Description: </label>
+<p>{{post.description}}</p>
+<h2>comments</h2>
+{{#if post.comments}}
+{{#each post.comments}}
+<label>comment:</label>
+<p>{{this.comment}}</p>
+<label>owner:</label>
+<p>{{this.owner.username}}</p>
+{{/each}}
+{{else}}
+<p>No comments yet</p>
+{{/if}}
+<p>Add a comment</p>
+<form action="/profile/posts/{{post._id}}/comment" method="POST">
+  <label for="">Comment:</label>
+  <textarea type="text" name="comment"></textarea>
+  <button type="submit">ADD</button>
+</form>
+<br>
+<a href="/profile/posts/edit/{{post._id}}">Edit post</a>
+<a href="/profile/posts/delete/{{post._id}}">Delete post</a>

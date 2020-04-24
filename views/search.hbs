@@ -1,0 +1,18 @@
+<div>
+  <form action="/profile/search" method="post">
+    <input type="text" name="searchInput">
+    <div>
+      <button type="submit">Search</button>
+    </div>
+  </form>
+</div>
+ <h1>Results</h1>
+{{#each users}}
+<div>
+<label for="email">friend's email </label>
+  <p>{{email}}</p>
+  <p>{{username}}</p>
+  <p> <a href="/profile/{{_id}}"> visit profile</a></p>
+</div>
+{{/each}}
+</div>
