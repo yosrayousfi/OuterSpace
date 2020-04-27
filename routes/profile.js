@@ -131,8 +131,8 @@ router.post("/search", (req, res, next) => {
 router.post("/:userID/follow", (req, res, next) => {
   const loggedInUser = req.user;
   const userIdToFollow = req.params.userID;
-
-  if (!loggedInUser.following.includes(userIdToFollow)) {
+  
+  if (!loggedInUser._id.equals(userIdToFollow) && !loggedInUser.following.includes(userIdToFollow)) {
     loggedInUser.following.push(userIdToFollow);
   }
   loggedInUser.save()

@@ -63,6 +63,8 @@
           {{/with}}
         </div>
       </div>
+      {{#if istheLogged}}
+      {{else}}
       <div class="card">
         {{#if alreadyFollowed}}
         <p>successfully followed</p>
@@ -72,6 +74,7 @@
         </form>
         {{/if}}
       </div>
+      {{/if}}
       <div class="card">
         <div class="text">
           <span><i class="fa fa-graduation-cap"></i></span>Studied at
