@@ -537,6 +537,14 @@ input {
   animation-delay: 60s;
 }
 
+.follow-btn {
+  background-color: white;
+  color: black;
+  padding: 10px 15px;
+  text-align: center;
+  border: solid #43a3e6; 
+}
+
 @keyframes imageAnimation {
   0% {
     opacity: 0;
