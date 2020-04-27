@@ -127,18 +127,15 @@ router.post("/search", (req, res, next) => {
     })
     .catch((err) => console.log(err));
 });
-// add route to like another user
+// add route to follow another user
 router.post("/:userID/follow", (req, res, next) => {
-  const loggedInUserId = req.user._id;
+  const loggedInUser = req.user;
   const userIdToFollow = req.params.userID;
 
-  User.findById(loggedInUserId)
-    .then(user => {
-      if (!user.following.includes(userIdToFollow)) {
-        user.following.push(userIdToFollow);
-      }
-      return user.save();
-    })
+  if (!loggedInUser.following.includes(userIdToFollow)) {
+    loggedInUser.following.push(userIdToFollow);
+  }
+  loggedInUser.save()
     .then (user => {
       res.redirect(`/profile/${userIdToFollow}`);
     })
