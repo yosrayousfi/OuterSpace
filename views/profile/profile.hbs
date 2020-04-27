@@ -1,29 +1,160 @@
-{{#if istheLogged}}
-<a href="/profile/addPost">create new post</a>
-<a href="/users/list">list of other users</a>
-<a href="/profile/logout">Logout</a>
-<a href="/profile/search">search for friends</a>
+<ul class="cb-slideshow">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<header>
+  <div class="navigation">
+    <div class="icon"><i class="fa fa-align-left"></i></div>
+    <div class="text">something</div>
+    {{#if istheLogged}}
+    <div class="text"> <a href="/profile/addPost">New post</a>
+    </div>
+    <div class="text"> <a href="/profile/search">Friends</a>
+    </div>
+    {{/if}}
+  </div>
+  <div class="awesome-form">
+    <form action="/profile/search" method="post">
+      <input type="text" placeholder="search..." name="searchInput" />
+    </form>
+  </div>
+  <div class="other">
+    <div class="user-info">
+      <div class="text"><a href="/api/rover">Home</a></div>
+    </div>
+    <div class="user-info">
+      {{#if istheLogged}}
+      <div class="text"><a href="/profile/logout">Logout</a></div>
+      {{/if}}
+    </div>
+    <div class="other-icons">
+      <i class="fa fa-user"></i><i class="fa fa-comment"></i><i class="fa fa-globe"></i><i
+        class="fa fa-align-right"></i>
+    </div>
+  </div>
+</header>
+<div class="main-content">
+  <div class="col-wrapper">
+    <div class="col-30">
+      <div class="card" style="background: transparent;">
+        <div class="profile-card all" data-effect="color">
+          <figure class="profile-card__image all">
+            <img src="https://c1.staticflickr.com/4/3935/32253842574_d3d449ab86_c.jpg" alt="Short description" />
+          </figure>
+          {{#with profileOwner}}
+          <div class="profile-card__header all">
+            <figure class="profile-card__profile all">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Neil_Armstrong.jpg"
+                alt="Short description" />
+            </figure>
+          </div>
+          <div class="profile-card__body all">
+            <h3 class="profile-card__name all">{{this.username}}</h3>
+            <p class="profile-card__job all">{{this.email}}</p>
+          </div>
+          <div class="profile-card__footer all">
+            <p class="profile-card__date all">Feb 10 2018</p>
+            <p class=""></p>
+          </div>
+          {{/with}}
+        </div>
+      </div>
+      <div class="card">
+        <div class="text">
+          <span><i class="fa fa-graduation-cap"></i></span>Studied at
+          University of ...
+        </div>
+        <div class="text">
+          <span><i class="fa fa-home"> </i></span>Lives in ...
+        </div>
+        <div class="text">
+          <span><i class="fa fa-map"></i></span>From ...
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">Friends<span>700</span></div>
+        <div class="thumb-wrapper">
+          <div class="thumb-unit">
+            <div>friend1</div>
+          </div>
+          <div class="thumb-unit">
+            <div>friend2</div>
+          </div>
+          <div class="thumb-unit">
+            <div>friend3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-50" style="width: 75%;">
+      <div class="card status">
+        <div class="icon-wrapper">
+          <a href="#"><i class="fa fa-edit"><span>Status</span></i></a>
+          <a href="#"><i class="far fa-image"></i></a>
+          <a href="#"><i class="fas fa-video"></i></a>
+        </div>
 
-<button><a href="/api/rover">rover</a></button>
-{{/if}}
-
-{{#with profileOwner}}
-<h1>profile of {{this.username}}</h1>
-<h1>his email is {{this.email}}</h1>
-{{/with}}
-
-{{#if postsList}}
-{{#with postsList}}
-{{#each this}}
-<label for="image">image </label>
-<p>{{image}}</p>
-<label for="description">Description: </label>
-<p>{{description}}</p>
-<label for="owner">Owner:</label>
-<p>{{this.owner.username}} </p>
-<a href="/profile/posts/details/{{_id}}">details</a>
-{{/each}}
-{{/with}}
-{{else}}
-<p>no posts yet</p>
-{{/if}}
+        <div class="message">
+          <form action="/profile/addPost" method="post">
+            {{!-- //ToDo : upload a video or a photo --}}
+            <input type="message" name="description" placeholder="Write Something....." />
+          </form>
+        </div>
+      </div>
+      <section id="main">
+        <section class="thumbnails" style="flex-wrap: wrap; margin: 0;">
+          {{#if postsList}}
+          {{#with postsList}}
+          {{#each this}}
+          <div class="box" style="height: 50%; width: 32%;">
+            <a class="lightCustom"
+              href="https://ununsplash.imgix.net/uploads/1412100990864810490bc/0c412568?fit=crop&fm=jpg&h=700&q=75&w=1050">
+              <img
+                src="https://ununsplash.imgix.net/uploads/1412100990864810490bc/0c412568?fit=crop&fm=jpg&h=700&q=75&w=1050"
+                class="media" alt="" />
+              <div class="caption">
+                <div class="box_title">
+                  <span>picture 1</span>
+                  <span>Comments 0</span>
+                  <span>Likes 5</span>
+                </div>
+                <div class="box_description">
+                  description 1
+                </div>
+              </div>
+            </a>
+          </div>
+          <label for="image">image </label>
+          <p>{{image}}</p>
+          <label for="description">Description: </label>
+          <p>{{description}}</p>
+          <label for="owner">Owner:</label>
+          <p>{{this.owner.username}} </p>
+          <a href="/profile/posts/details/{{_id}}">details</a>
+          {{/each}}
+          {{/with}}
+          {{else}}
+          <p>no posts yet</p>
+          {{/if}}
+        </section>
+      </section>
+    </div>
+  </div>
+</div>
+{{!-- //ToDo: display friends list in a popup --}}
+{{!-- {{#if users}}
+<div id="myModal" class="modal" style="display: block;">
+  <div class="modal-content">
+    {{#each users}}
+    <label for="email">friend's email </label>
+    <p>{{email}}</p>
+    <p>{{username}}</p>
+    <p> <a href="/profile/{{_id}}"> visit profile</a></p>
+    {{/each}}
+  </div>
+</div>
+{{/if}} --}}

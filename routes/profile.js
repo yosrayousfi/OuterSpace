@@ -118,15 +118,20 @@ router.post("/search", (req, res, next) => {
     .then((users) => {
       console.log("logged", req.user);
       const otherfriends = users.filter((x) => x.username != req.user.username);
-      console.log(otherfriends);
       res.render("search", { users: otherfriends });
+      res.render("search", { users: otherfriends });
+      //ToDo: display friends list in a popup
+      // req.session.friendsList = friendsList;
+      // next(null, null, { friendsList: friendsList });
+      //res.redirect("profile");
     })
     .catch((err) => console.log(err));
 });
 //your owen profile
 router.get("/profile", (req, res, next) => {
-  console.log("find posts");
   Post.find({ owner: req.user._id })
+    //sort by the most recent post
+    .sort({ created_at: -1 })
     .populate({ path: "owner" })
     .then((posts) => {
       console.log("populated", posts);
@@ -134,6 +139,8 @@ router.get("/profile", (req, res, next) => {
         postsList: posts,
         profileOwner: req.user,
         istheLogged: true,
+        //ToDo: display friends list in a popup
+        //users: req.session.friendsList,
       });
     })
     .catch((err) => {
