@@ -127,7 +127,26 @@ router.post("/search", (req, res, next) => {
     })
     .catch((err) => console.log(err));
 });
-//your owen profile
+// add route to like another user
+router.post("/:userID/follow", (req, res, next) => {
+  const loggedInUserId = req.user._id;
+  const userIdToFollow = req.params.userID;
+
+  User.findById(loggedInUserId)
+    .then(user => {
+      if (!user.following.includes(userIdToFollow)) {
+        user.following.push(userIdToFollow);
+      }
+      return user.save();
+    })
+    .then (user => {
+      res.redirect(`/profile/${userIdToFollow}`);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+//your own profile
 router.get("/profile", (req, res, next) => {
   Post.find({ owner: req.user._id })
     //sort by the most recent post

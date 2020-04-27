@@ -64,6 +64,11 @@
         </div>
       </div>
       <div class="card">
+        <form action="/profile/{{profileOwner._id}}/follow" method="POST">
+          <button type="submit">follow this person</button>
+        </form>
+      </div>
+      <div class="card">
         <div class="text">
           <span><i class="fa fa-graduation-cap"></i></span>Studied at
           University of ...
