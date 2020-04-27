@@ -181,6 +181,7 @@ router.get("/:id", (req, res, next) => {
             postsList: posts,
             profileOwner: user,
             istheLogged: false,
+            alreadyFollowed: req.user.following.includes(req.params.id),
           });
         });
     })

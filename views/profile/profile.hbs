@@ -64,9 +64,13 @@
         </div>
       </div>
       <div class="card">
-        <form action="/profile/{{profileOwner._id}}/follow" method="POST">
-          <button type="submit">follow this person</button>
+        {{#if alreadyFollowed}}
+        <p>successfully followed</p>
+        {{else}}
+        <form action="/profile/{{profileOwner._id}}/follow" method="POST" >
+          <button type="submit" class="follow-btn">follow this person</button>
         </form>
+        {{/if}}
       </div>
       <div class="card">
         <div class="text">
