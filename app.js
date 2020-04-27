@@ -18,6 +18,7 @@ const bcrypt = require("bcrypt");
 var index = require("./routes/index");
 var auth = require("./routes/auth");
 var profile = require("./routes/profile");
+var api = require("./routes/api");
 // var users = require("./routes/users");
 var app = express();
 const app_name = require("./package.json").name;
@@ -49,6 +50,7 @@ app.use(passport.session());
 app.use("/", index);
 app.use("/", auth);
 app.use("/profile", profile);
+app.use("/api", api);
 // app.use("/users", users);
 mongoose
   .connect("mongodb://localhost/project2", {

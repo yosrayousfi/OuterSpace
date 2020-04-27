@@ -1,6 +1,126 @@
-<h1>connecting</h1>
-<div>
-        <button><a href="/login">Login</a></button>
-        <button><a href="/signup">Sign Up</a></button>
-        <a href="/auth/github">Login via Github</a>
+<style>
+        body {
+                background: black;
+        }
+</style>
+
+{{!-- <button><a href="/auth/github"> github</a></button> --}}
+
+
+<div id="particles-js"></div>
+<ul class="cb-slideshow">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+</ul>
+<div class="container-fluid">
+        <div class="cb-slideshow-text-container">
+                <div class="tm-content col-xl-7 col-sm-8 col-xs-8 ml-auto section">
+                        <section class="user">
+                                <div class="user_options-container">
+                                        <div class="user_options-text">
+                                                <div class="user_options-unregistered">
+                                                        <h2 class="user_unregistered-title childsign">
+                                                                Don't have an account?
+                                                        </h2>
+                                                        <p class="user_unregistered-text childsign">
+                                                                <!-- Banjo tote bag bicycle rights, High Life sartorial cray craft beer
+											whatever street art fap. -->
+                                                        </p>
+                                                        <button class="user_unregistered-signup childsign"
+                                                                id="signup-button">
+                                                                Sign up
+                                                        </button>
+                                                </div>
+
+                                                <div class="user_options-registered">
+                                                        <h2 class="user_registered-title childlog">
+                                                                Have an account?
+                                                        </h2>
+                                                        <p class="user_registered-text childlog">
+                                                                <!-- Banjo tote bag bicycle rights, High Life sartorial cray craft beer
+											whatever street art fap. -->
+                                                        </p>
+                                                        <button class="user_registered-login childlog"
+                                                                id="login-button">
+                                                                Login
+                                                        </button>
+                                                </div>
+                                        </div>
+
+                                        <div class="user_options-forms" id="user_options-forms">
+                                                <div class="user_forms-login">
+                                                        <h2 class="forms_title">Login</h2>
+                                                        <!-- mywork -->
+                                                        <form class="forms_form" action="/login" method="POST"
+                                                                novalidate>
+                                                                <fieldset class="forms_fieldset">
+                                                                        <div class="forms_field">
+                                                                                <input type="text"
+                                                                                        placeholder="user name"
+                                                                                        name="username"
+                                                                                        class="forms_field-input"
+                                                                                        required />
+                                                                        </div>
+                                                                        <div class="forms_field">
+                                                                                <input type="password"
+                                                                                        placeholder="Password"
+                                                                                        name="password"
+                                                                                        class="forms_field-input"
+                                                                                        required />
+                                                                        </div>
+                                                                </fieldset>
+                                                                <div class="forms_buttons">
+                                                                        <button type="button"
+                                                                                class="forms_buttons-forgot">
+                                                                                Forgot password?
+                                                                        </button>
+                                                                        <input type="submit" value="Log In"
+                                                                                class="forms_buttons-action" />
+                                                                </div>
+                                                        </form>
+                                                </div>
+                                                <div class="user_forms-signup">
+                                                        <h2 class="forms_title">Sign Up</h2>
+                                                        <form class="forms_form" action="/signup" method="POST"
+                                                                novalidate>
+                                                                <fieldset class="forms_fieldset">
+                                                                        <div class="forms_field">
+                                                                                <input type="text" name="username"
+                                                                                        placeholder="Full Name"
+                                                                                        class="forms_field-input"
+                                                                                        required />
+                                                                        </div>
+                                                                        <div class="forms_field">
+                                                                                <input type="email" placeholder="Email"
+                                                                                        name="email"
+                                                                                        class="forms_field-input"
+                                                                                        required />
+                                                                        </div>
+                                                                        <div class="forms_field">
+                                                                                <input type="password"
+                                                                                        placeholder="Password"
+                                                                                        name="password"
+                                                                                        class="forms_field-input"
+                                                                                        required />
+                                                                        </div>
+                                                                </fieldset>
+                                                                <div class="forms_buttons">
+                                                                        <input type="submit" value="Sign up"
+                                                                                class="forms_buttons-action" />
+                                                                </div>
+                                                        </form>
+                                                </div>
+                                        </div>
+                                </div>
+                        </section>
+                </div>
+        </div>
 </div>
+
+<script type="text/javascript">
+
+</script>

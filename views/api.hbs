@@ -1,0 +1,35 @@
+<button><a href="/api/picDay">picture of the day</a></button>
+{{#with picDay}}
+<p>copyright: {{this.copyright}}</p>
+<p>date: {{this.date}}</p>
+<p>explanation: {{this.explanation}}</p>
+<p>media_type: {{this.media_type}}</p>
+<p>title: {{this.title}}</p>
+<img src="{{this.url}}" alt="">
+{{/with}}
+<form action="/api/rover" method="POST">
+  <input type="radio" name="rover" value="curiosity" />curiosity
+  <input type="radio" name="rover" value="opportunity" />opportunity
+  <input type="radio" name="rover" value="spirit" />spirit
+  <br />
+  {{!-- Camera:
+  <input type="checkbox" id="FHAZ" name="cam1" value="FHAZ" />
+  <input type="checkbox" id="RHAZ" name="cam2" value="RHAZ" />
+  <input type="checkbox" id="NAVCAM" name="cam3" value="NAVCAM" />
+date:
+  <br /> --}}
+  <button type="submit">Post</button>
+</form>
+{{#with rover}}
+<p>name: {{this.name}}</p>
+<p>landing_date: {{this.landing_date}} </p>
+<p>launch_date: {{this.launch_date}}</p>
+<p>status: {{this.status}}</p>
+<p>max_sol: {{this.max_sol}}</p>
+<p>max_date: {{this.max_date}}</p>
+<p>total_photos: {{this.total_photos}}</p>
+{{/with}}
+{{#each photos}}
+<p>{{this.camera.full_name}}</p>
+<img src="{{this.img_src}}" alt="">
+{{/each}}
