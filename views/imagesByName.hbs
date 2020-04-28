@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Images on NASA API</h1>
+      <p class="lead text-muted">Seach images from NASA archive</p>
+      <p>
+        <form action="/api/imagesByName" method="POST">
+          <input type="text" name="searchInput" placeholder='ex: sun,earth,mars...'>
+          <button id="btn">Search</button>
+        </form>
+
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container" id='divresult'>
+      <div class="row">
+        {{#each images}}
+
+
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            {{#with this.links.[0]}}
+
+            <img class="card-img-top" src="{{this.href}}">
+            {{/with}}
+            {{#each this.data}}
+
+            <div class="card-body">
+              <h5>{{title}}</h5>
+              <p class="card-text">{{description}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                </div>
+                <small class="text-muted">{{date_created}}</small>
+              </div>
+            </div>
+            {{/each}}
+
+          </div>
+        </div>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+
+</main>
