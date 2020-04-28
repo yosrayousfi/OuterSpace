@@ -60,7 +60,7 @@ router.post("/rovers", (req, res, next) => {
           // console.log("rover data", roverData.photo_manifest);
           // console.log("photos", data.photos);
           res.render("rovers", {
-            photos: data.photos.slice(0,3),
+            photos: data.photos,
             rover: roverData.photo_manifest,
           });
         });
