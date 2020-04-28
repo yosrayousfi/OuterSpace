@@ -247,6 +247,8 @@ input::placeholder {
   * Login and signup forms
   */
 .user_options-forms {
+  box-shadow: 0 0px 30px rgba(28, 51, 198, 0.9);
+
   position: absolute;
   top: 50%;
   left: 30px;
@@ -447,7 +449,7 @@ input {
 }
 
 .cb-slideshow-text-container {
-  height: 100vh;
+  height: 90%;
   display: flex;
   align-items: center;
 }
@@ -542,7 +544,7 @@ input {
   color: black;
   padding: 10px 15px;
   text-align: center;
-  border: solid #43a3e6; 
+  border: solid #43a3e6;
 }
 
 @keyframes imageAnimation {
@@ -1198,4 +1200,207 @@ body {
   cursor: pointer;
   outline: 0;
   overflow: hidden;
+}
+
+/* sci fi design */
+
+@import url(https://fonts.googleapis.com/css?family=Rajdhani:300);
+
+* {
+  font-family: "Rajdhani", sans-serif;
+}
+
+body {
+  background: black;
+}
+
+@keyframes flicker {
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+  51%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.scifiUI {
+  font-size: 18px;
+  color: #00bebe;
+}
+
+.scifiUI * {
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.scifiUI :before,
+.scifiUI :after {
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  content: "";
+}
+
+.scifiUI input {
+  border: 1px solid #00bebe;
+
+  background: transparent;
+}
+
+.scifiUI input:hover {
+  box-shadow: 0 0 8px #00bebe inset, 0 0 8px #00bebe;
+  border: 1px solid #00dcdc;
+
+  color: whitesmoke;
+  animation: 0.07s flicker;
+  animation-iteration-count: 2;
+  transition: all 0.35s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.scifiUI button {
+  overflow: hidden;
+  position: relative;
+  width: 200px;
+  height: 50px;
+  border: 1px solid #00bebe;
+  background: rgba(0, 190, 190, 0.2);
+}
+
+.scifiUI button:hover {
+  box-shadow: 0 0 8px #00bebe inset, 0 0 8px #00bebe;
+  border: 1px solid #00dcdc;
+  color: #00dcdc;
+  background: rgba(0, 220, 220, 0.3);
+
+  color: whitesmoke;
+  animation: 0.07s flicker;
+  animation-iteration-count: 2;
+  transition: all 0.35s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+.radar {
+  box-shadow: 0 0px 30px rgba(28, 51, 198, 0.9);
+  border-radius: 20px;
+}
+
+.radar:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 89%,
+    rgba(0, 255, 255, 0.3) 1%,
+    transparent
+  );
+  border-radius: 20px;
+  animation: animatedgradient 5s infinite;
+  background-size: 200% 200%;
+
+  box-shadow: inset 0 0px 15px 1px rgba(0, 255, 255, 0.3);
+  z-index: -1;
+}
+
+.marquee {
+  height: 100%;
+  font-family: sans-serif, "Press Start 2P";
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  background: rgb(35, 39, 118, 0.5);
+  padding: 0.2em 0;
+  color: #29cac8;
+  box-shadow: 2px 2px 10px #232776;
+  overflow: hidden;
+  position: relative;
+  animation: text-line-glow 2s linear infinite;
+}
+
+@keyframes text-line-glow {
+  0% {
+    text-shadow: 0px 0px 0px #29cac8;
+  }
+
+  50% {
+    text-shadow: 0px 0px 4px #29cac8;
+  }
+}
+
+.marquee:before {
+  content: "";
+  position: absolute;
+  display: block;
+  background-image: repeating-linear-gradient(
+      0deg,
+      #23277600,
+      #23277600 1px,
+      #040a2444 1px,
+      #040a2444 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #23277600,
+      #23277600 2px,
+      #040a2444 2px,
+      #040a2444 3px
+    );
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.marquee:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  animation: line-glow 3.5s linear infinite;
+  animation-timing-function: steps(50);
+}
+
+@keyframes line-glow {
+  0% {
+    right: -2%;
+    background-color: #29cac8;
+    box-shadow: 0 0 20px #ffd2fe00;
+  }
+
+  50% {
+    right: 102%;
+    background-color: #29cac8;
+    box-shadow: 0 0 30px #ffd2feff;
+  }
 }
