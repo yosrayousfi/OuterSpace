@@ -127,7 +127,23 @@ router.post("/search", (req, res, next) => {
     })
     .catch((err) => console.log(err));
 });
-//your owen profile
+// add route to follow another user
+router.post("/:userID/follow", (req, res, next) => {
+  const loggedInUser = req.user;
+  const userIdToFollow = req.params.userID;
+  
+  if (!loggedInUser._id.equals(userIdToFollow) && !loggedInUser.following.includes(userIdToFollow)) {
+    loggedInUser.following.push(userIdToFollow);
+  }
+  loggedInUser.save()
+    .then (user => {
+      res.redirect(`/profile/${userIdToFollow}`);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+//your own profile
 router.get("/profile", (req, res, next) => {
   Post.find({ owner: req.user._id })
     //sort by the most recent post
@@ -162,6 +178,7 @@ router.get("/:id", (req, res, next) => {
             postsList: posts,
             profileOwner: user,
             istheLogged: false,
+            alreadyFollowed: req.user.following.includes(req.params.id),
           });
         });
     })

@@ -63,6 +63,18 @@
           {{/with}}
         </div>
       </div>
+      {{#if istheLogged}}
+      {{else}}
+      <div class="card">
+        {{#if alreadyFollowed}}
+        <p>successfully followed</p>
+        {{else}}
+        <form action="/profile/{{profileOwner._id}}/follow" method="POST" >
+          <button type="submit" class="follow-btn">follow this person</button>
+        </form>
+        {{/if}}
+      </div>
+      {{/if}}
       <div class="card">
         <div class="text">
           <span><i class="fa fa-graduation-cap"></i></span>Studied at
