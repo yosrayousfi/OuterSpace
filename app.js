@@ -29,6 +29,12 @@ const debug = require("debug")(
 //hbs.registerPartials(__dirname + '/views/partials');;
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+hbs.registerHelper("ifCond", function (v1, v2, options) {
+  if (v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
