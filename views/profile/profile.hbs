@@ -121,9 +121,9 @@
           {{#each this}}
           <div class="box" style="height: 50%; width: 32%;">
             <a class="lightCustom"
-              href="https://ununsplash.imgix.net/uploads/1412100990864810490bc/0c412568?fit=crop&fm=jpg&h=700&q=75&w=1050">
+              href="{{image}}">
               <img
-                src="https://ununsplash.imgix.net/uploads/1412100990864810490bc/0c412568?fit=crop&fm=jpg&h=700&q=75&w=1050"
+                src="{{image}}"
                 class="media" alt="" />
               <div class="caption">
                 <div class="box_title">
@@ -137,9 +137,6 @@
               </div>
             </a>
           </div>
-          <label for="image">image </label>
-          <p>{{image}}</p>
-          <label for="description">Description: </label>
           <p>{{description}}</p>
           <label for="owner">Owner:</label>
           <p>{{this.owner.username}} </p>
