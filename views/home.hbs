@@ -1,12 +1,4 @@
-<style>
-        body {
-                background: black;
-        }
-</style>
-
 {{!-- <button><a href="/auth/github"> github</a></button> --}}
-
-
 <div id="particles-js"></div>
 <ul class="cb-slideshow">
         <li></li>
@@ -16,19 +8,19 @@
         <li></li>
         <li></li>
 </ul>
-<div class="container-fluid">
+<div class="container-fluid " style="height: 100vh;">
         <div class="cb-slideshow-text-container">
                 <div class="tm-content col-xl-7 col-sm-8 col-xs-8 ml-auto section">
-                        <section class="user">
+                        <section class="user scifiUI">
                                 <div class="user_options-container">
-                                        <div class="user_options-text">
+                                        <div class="user_options-text"
+                                                style="box-shadow: 0 0px 30px rgba(28, 51, 198, 0.9);">
                                                 <div class="user_options-unregistered">
                                                         <h2 class="user_unregistered-title childsign">
                                                                 Don't have an account?
                                                         </h2>
                                                         <p class="user_unregistered-text childsign">
-                                                                <!-- Banjo tote bag bicycle rights, High Life sartorial cray craft beer
-											whatever street art fap. -->
+                                                                Add Text here
                                                         </p>
                                                         <button class="user_unregistered-signup childsign"
                                                                 id="signup-button">
@@ -41,8 +33,7 @@
                                                                 Have an account?
                                                         </h2>
                                                         <p class="user_registered-text childlog">
-                                                                <!-- Banjo tote bag bicycle rights, High Life sartorial cray craft beer
-											whatever street art fap. -->
+                                                                Add Text here
                                                         </p>
                                                         <button class="user_registered-login childlog"
                                                                 id="login-button">
@@ -51,10 +42,9 @@
                                                 </div>
                                         </div>
 
-                                        <div class="user_options-forms" id="user_options-forms">
+                                        <div class="user_options-forms radar" id="user_options-forms">
                                                 <div class="user_forms-login">
                                                         <h2 class="forms_title">Login</h2>
-                                                        <!-- mywork -->
                                                         <form class="forms_form" action="/login" method="POST"
                                                                 novalidate>
                                                                 <fieldset class="forms_fieldset">
@@ -74,10 +64,10 @@
                                                                         </div>
                                                                 </fieldset>
                                                                 <div class="forms_buttons">
-                                                                        <button type="button"
+                                                                        {{!-- <button type="button"
                                                                                 class="forms_buttons-forgot">
                                                                                 Forgot password?
-                                                                        </button>
+                                                                        </button> --}}
                                                                         <input type="submit" value="Log In"
                                                                                 class="forms_buttons-action" />
                                                                 </div>
@@ -118,5 +108,11 @@
                                 </div>
                         </section>
                 </div>
+        </div>
+
+        <div>
+                <marquee direction="left" speed="normal" behavior="loop" class="marquee">
+                        Welcome To Outer Space..
+                </marquee>
         </div>
 </div>

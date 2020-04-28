@@ -133,4 +133,5 @@ router.post("/astroides", (req, res, next) => {
 router.get("/live", function (req, res, next) {
   res.render("live");
 });
+
 module.exports = router;
