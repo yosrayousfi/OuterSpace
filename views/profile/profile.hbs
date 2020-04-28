@@ -70,7 +70,7 @@
         <p>you two are already friends.</p>
         {{else}}
         <form action="/profile/{{profileOwner._id}}/follow" method="POST" >
-          <button type="submit" class="follow-btn">follow this person</button>
+          <button type="submit" class="btn btn-sm btn-outline-secondary">follow this person</button>
         </form>
         {{/if}}
       </div>
@@ -137,9 +137,8 @@
               </div>
             </a>
           </div>
-          <p>{{description}}</p>
-          <label for="owner">Owner:</label>
-          <p>{{this.owner.username}} </p>
+          <p>Description:{{description}}</p>
+          <p>Owner: {{this.owner.username}} </p>
           <a href="/profile/posts/details/{{_id}}">details</a>
           {{/each}}
           {{/with}}
