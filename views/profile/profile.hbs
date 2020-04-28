@@ -67,7 +67,7 @@
       {{else}}
       <div class="card">
         {{#if alreadyFollowed}}
-        <p>successfully followed</p>
+        <p>you two are already friends.</p>
         {{else}}
         <form action="/profile/{{profileOwner._id}}/follow" method="POST" >
           <button type="submit" class="follow-btn">follow this person</button>
@@ -87,20 +87,17 @@
           <span><i class="fa fa-map"></i></span>From ...
         </div>
       </div>
+      {{!-- display following list  --}}
       <div class="card">
-        <div class="title">Friends<span>700</span></div>
+        <div class="title">Connecting Outer Spaces<span>{{profileOwner.following.length}} outer space</span></div>
         <div class="thumb-wrapper">
+        {{#each profileOwner.following}} 
           <div class="thumb-unit">
-            <div>friend1</div>
+            <div>{{this.username}}</div>
           </div>
-          <div class="thumb-unit">
-            <div>friend2</div>
-          </div>
-          <div class="thumb-unit">
-            <div>friend3</div>
-          </div>
+        {{/each}}
         </div>
-      </div>
+      </div> 
     </div>
     <div class="col-50" style="width: 75%;">
       <div class="card status">

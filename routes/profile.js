@@ -145,6 +145,11 @@ router.post("/:userID/follow", (req, res, next) => {
 });
 //your own profile
 router.get("/profile", (req, res, next) => {
+  console.log('following!!', req.user.following)
+  User.populate(req.user, {path: "following"}).then (populatedUser => {
+    console.log('populated following!!', populatedUser.following)
+  });
+
   Post.find({ owner: req.user._id })
     //sort by the most recent post
     .sort({ created_at: -1 })
