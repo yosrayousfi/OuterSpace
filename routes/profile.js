@@ -127,7 +127,7 @@ router.post("/search", (req, res, next) => {
     })
     .catch((err) => console.log(err));
 });
-// add route to follow another user
+//POST add route to follow another user
 router.post("/:userID/follow", (req, res, next) => {
   const loggedInUser = req.user;
   const userIdToFollow = req.params.userID;
@@ -143,6 +143,21 @@ router.post("/:userID/follow", (req, res, next) => {
       next(err);
     });
 });
+//POST share data from api to database
+router.post("/share", (req, res, next) => {
+    Post.create({
+      image: req.body.image,
+      description: req.body.description,
+      owner: req.user._id,
+    })
+      .then((post) => {
+        console.log(post);
+        res.redirect("/profile/profile");
+      })
+      .catch((err) => {
+        next(err);
+      });
+}); 
 //your own profile
 router.get("/profile", (req, res, next) => {
   console.log('following!!', req.user.following)

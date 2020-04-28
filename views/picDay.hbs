@@ -5,4 +5,10 @@
 <p>media_type: {{this.media_type}}</p>
 <p>title: {{this.title}}</p>
 <img src="{{this.url}}" alt="">
+
+<form action="/profile/share" method="POST" >
+  <input name="image" value="{{this.url}}" hidden>
+  <input name="description" value="{{this.explanation}}" hidden>
+  <button type="submit" class="follow-btn">share</button>
+</form>
 {{/with}}
