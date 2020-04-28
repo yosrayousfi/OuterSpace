@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const User = require("./user");
 const Comment = require("./comment");
 
-const roomSchema = new Schema({
+const postSchema = new Schema({
   image: {
     type: String,
   },
@@ -25,6 +25,6 @@ const roomSchema = new Schema({
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
 });
 
-const Post = mongoose.model("Post", roomSchema);
+const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;
