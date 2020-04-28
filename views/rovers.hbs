@@ -7,8 +7,8 @@
 
 <form action="/api/rovers" method="POST">
   <input type="radio" name="rover" value="curiosity" style="width: auto;" checked>curiosity</input>
-  <input type="radio" name="rover" value="opportunity" style="width: auto;">opportunity </input>
-  <input type="radio" name="rover" value="spirit" style="width: auto;">spirit </input>
+  <input type="radio" name="rover" value="opportunity" style="width: auto;">opportunity</input>
+  <input type="radio" name="rover" value="spirit" style="width: auto;">spirit</input>
   <br />
   <input type="range" id="sol" name="solDan" min="0" max="1000" value="0" step="10"
     onchange="updateTextInput(this.value);">
@@ -35,4 +35,10 @@ date:
 {{#each photos}}
 <p>{{this.camera.full_name}}</p>
 <img src="{{this.img_src}}" alt="">
+
+<form action="/profile/share" method="POST" >
+  <input name="image" value="{{this.img_src}}" hidden>
+  <input name="description" value="Rover {{../rover.name}} - {{this.camera.full_name}}" hidden>
+  <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
+</form>
 {{/each}}

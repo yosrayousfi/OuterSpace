@@ -36,7 +36,11 @@
               <p class="card-text">{{description}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                  <form action="/profile/share" method="POST" >
+                    <input name="image" value="{{../links.[0].href}}" hidden>
+                    <input name="description" value="{{title}}: {{description}}" hidden>
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
+                  </form>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
                 </div>
                 <small class="text-muted">{{date_created}}</small>

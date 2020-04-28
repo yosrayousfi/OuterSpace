@@ -143,7 +143,7 @@ router.post("/:userID/follow", (req, res, next) => {
       next(err);
     });
 });
-//POST share data from api to database
+//POST share data from api to database (pic-of-day, rovers)
 router.post("/share", (req, res, next) => {
     Post.create({
       image: req.body.image,
