@@ -26,12 +26,6 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
-    liked: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: Post,
-      },
-    ],
     profile_pic: String,
     // chat_rooms:Array,
     // notifications:Array,

@@ -25,7 +25,7 @@ router.get("/posts/details/:id", (req, res) => {
       console.log(post);
       res.render("profile/postDetails", { 
         post: post,
-        alreadyLiked: req.user.liked.includes(req.params.id),
+        alreadyLiked: post.liked.includes(req.user._id),
         isLoggedInUser: req.user._id.equals(post.owner),
       });
     });
@@ -155,12 +155,12 @@ router.post("/posts/:postID/like", (req, res, next) => {
   
   Post.findById(postIdToLike)
     .then((post) => {
-      if (!loggedInUser._id.equals(post.owner) && !loggedInUser.liked.includes(postIdToLike)) {
-        loggedInUser.liked.push(postIdToLike);
+      if (!loggedInUser._id.equals(post.owner) && !post.liked.includes(loggedInUser._id)) {
+        post.liked.push(loggedInUser._id);
       }
-      return loggedInUser.save() //return: waiting for .save before moving to redirect
+      return post.save() //return: waiting for .save before moving to redirect
     })
-    .then (user => {
+    .then (post => {
       res.redirect(`/profile/posts/details/${postIdToLike}`);
     })
     .catch((err) => {
