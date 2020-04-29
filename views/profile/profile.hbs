@@ -119,27 +119,19 @@
           {{#if postsList}}
           {{#with postsList}}
           {{#each this}}
-          <div class="box" style="height: 50%; width: 32%;">
-            <a class="lightCustom"
-              href="{{image}}">
-              <img
-                src="{{image}}"
-                class="media" alt="" />
-              <div class="caption">
-                <div class="box_title">
-                  <span>picture 1</span>
-                  <span>Comments 0</span>
-                  <span>Likes 5</span>
-                </div>
-                <div class="box_description">
-                  description 1
+          <div class="box">  
+            <a class="lightCustom" href="/profile/posts/details/{{_id}}">
+              <div
+                style="background-image: url({{image}});"
+                class="media">
+                <div class="caption">
+                    <p>{{description}}</p>
                 </div>
               </div>
             </a>
+            <span>Comments 0</span>
+            <span>Likes 5</span>
           </div>
-          <p>Description:{{description}}</p>
-          <p>Owner: {{this.owner.username}} </p>
-          <a href="/profile/posts/details/{{_id}}">details</a>
           {{/each}}
           {{/with}}
           {{else}}
