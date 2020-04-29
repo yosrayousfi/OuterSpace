@@ -921,6 +921,16 @@ input {
   mix-blend-mode: normal;
 }
 
+.post-details {
+  color: silver
+}
+
+.like-post-btn {
+  color: white;
+  background-color: black;
+  border:1px solid white;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Arima+Madurai:300,400,700,900");
 
 * {
