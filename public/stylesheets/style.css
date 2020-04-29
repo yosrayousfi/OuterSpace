@@ -642,6 +642,11 @@ input {
   transition: all 0.5s ease;
 }
 
+.likes-and-comments {
+  font-size: 12px;
+  margin-top: 6px;
+}
+
 .box a img {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -1182,8 +1187,7 @@ body {
 .box {
   border-radius: 4px;
   border: solid 1px rgba(255, 255, 255, 0.25);
-  margin-bottom: 2em;
-  padding: 1.5em;
+  margin-bottom: 1em;
 }
 
 .box > :last-child,
