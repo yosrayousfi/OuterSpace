@@ -28,7 +28,15 @@
                     <script>()
                       document.getElementById(img).style =
                     </script>
-                    <div class="bottom-left" style="font-size: 0.2em;">Took By: {{this.camera.full_name}}</div>
+
+                    <div class="bottom-left" style="font-size: 0.2em;">
+                      Took By: {{this.camera.full_name}}
+                      <form action="/profile/share" method="POST" style="margin-bottom:0">
+                        <input name="image" value="{{this.img_src}}" hidden>
+                        <input name="description" value="Rover {{../rover.name}} - {{this.camera.full_name}}" hidden>
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
+                      </form>
+                    </div>
                   </li>
                   {{/each}}
 

@@ -604,34 +604,47 @@ input {
   box-shadow: 2px 2px 7px 1px white;
   background: rgb(128, 128, 128, 0.3);
   display: block;
-  height: auto;
   float: left;
   position: relative;
   overflow: hidden;
   margin: 0.25em;
+  width: 100%;
+  height: auto;
 }
 
 .box .media {
+  
+  display: block;
   width: 100%;
-  vertical-align: middle;
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  
 }
 
 .box .caption {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
+  bottom: 0;
   left: 0;
-  background: #000;
+  right: 0;
+  text-align: left;
+  position: absolute;
   background: rgba(0, 0, 0, 0.2);
   opacity: 0;
   transition: all 0.5s ease;
+  color: whitesmoke;
+  font-size: 18px;
+  padding: 20px
 }
 
 .box a:hover .caption {
   opacity: 1;
   transition: all 0.5s ease;
+}
+
+.likes-and-comments {
+  font-size: 12px;
+  margin-top: 6px;
 }
 
 .box a img {
@@ -655,8 +668,10 @@ input {
   width: 100%;
   position: absolute;
   text-align: center;
+  flex-direction: row;
   top: 50%;
   margin-top: -50px;
+
 }
 
 .box .caption .box_description {
@@ -669,16 +684,17 @@ input {
   max-width: 60%;
   padding: 0.5em;
   z-index: 77;
-  background: black;
+  background: transparent;
   border-bottom: 1px solid rgb(22, 22, 22);
   color: white;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 300;
   text-align: center;
   margin: auto;
-  box-shadow: 0 6px 6px -6px black;
-  opacity: 1;
+  box-shadow: 0 6px 6px -6px black; 
+  opacity: 1; 
 }
+
 
 .box .caption:hover span {
   animation: slideDown 0.5s 1 ease;
@@ -921,6 +937,16 @@ input {
   mix-blend-mode: normal;
 }
 
+.post-details {
+  color: silver
+}
+
+.like-post-btn {
+  color: white;
+  background-color: black;
+  border:1px solid white;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Arima+Madurai:300,400,700,900");
 
 * {
@@ -1161,8 +1187,7 @@ body {
 .box {
   border-radius: 4px;
   border: solid 1px rgba(255, 255, 255, 0.25);
-  margin-bottom: 2em;
-  padding: 1.5em;
+  margin-bottom: 1em;
 }
 
 .box > :last-child,
@@ -1170,6 +1195,7 @@ body {
 .box > :last-child > :last-child > :last-child {
   margin-bottom: 0;
 }
+
 
 .thumbnails {
   display: -moz-flex;

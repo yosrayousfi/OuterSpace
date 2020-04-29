@@ -67,10 +67,10 @@
       {{else}}
       <div class="card">
         {{#if alreadyFollowed}}
-        <p>you two are already friends.</p>
+        <p>your Outer Spaces are connected.</p>
         {{else}}
         <form action="/profile/{{profileOwner._id}}/follow" method="POST" >
-          <button type="submit" class="follow-btn">follow this person</button>
+          <button type="submit" class="btn btn-sm btn-outline-secondary">follow this person</button>
         </form>
         {{/if}}
       </div>
@@ -119,28 +119,19 @@
           {{#if postsList}}
           {{#with postsList}}
           {{#each this}}
-          <div class="box" style="height: 50%; width: 32%;">
-            <a class="lightCustom"
-              href="{{image}}">
-              <img
-                src="{{image}}"
-                class="media" alt="" />
-              <div class="caption">
-                <div class="box_title">
-                  <span>picture 1</span>
-                  <span>Comments 0</span>
-                  <span>Likes 5</span>
-                </div>
-                <div class="box_description">
-                  description 1
+          <div class="box">  
+            <a class="lightCustom" href="/profile/posts/details/{{_id}}">
+              <div
+                style="background-image: url({{image}});"
+                class="media">
+                <div class="caption">
+                    <p>{{description}}</p>
+                    <p class="likes-and-comments">Comments {{comments.length}} &middot; Likes {{liked.length}}</p>
                 </div>
               </div>
             </a>
+            
           </div>
-          <p>{{description}}</p>
-          <label for="owner">Owner:</label>
-          <p>{{this.owner.username}} </p>
-          <a href="/profile/posts/details/{{_id}}">details</a>
           {{/each}}
           {{/with}}
           {{else}}

@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user");
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+
 router.get("/logout", (req, res, next) => {
   console.log("lougout rounte found");
   req.logout();
@@ -22,7 +23,11 @@ router.get("/posts/details/:id", (req, res) => {
     })
     .then((post) => {
       console.log(post);
-      res.render("profile/postDetails", { post: post });
+      res.render("profile/postDetails", { 
+        post: post,
+        alreadyLiked: post.liked.includes(req.user._id),
+        isLoggedInUser: req.user._id.equals(post.owner),
+      });
     });
 });
 router.get("/addPost", (req, res, next) => {
@@ -127,7 +132,7 @@ router.post("/search", (req, res, next) => {
     })
     .catch((err) => console.log(err));
 });
-//POST add route to follow another user
+//POST follow another user
 router.post("/:userID/follow", (req, res, next) => {
   const loggedInUser = req.user;
   const userIdToFollow = req.params.userID;
@@ -138,6 +143,25 @@ router.post("/:userID/follow", (req, res, next) => {
   loggedInUser.save()
     .then (user => {
       res.redirect(`/profile/${userIdToFollow}`);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+//POST save liked posts to user profile in database
+router.post("/posts/:postID/like", (req, res, next) => {
+  const loggedInUser = req.user;
+  const postIdToLike = req.params.postID;
+  
+  Post.findById(postIdToLike)
+    .then((post) => {
+      if (!loggedInUser._id.equals(post.owner) && !post.liked.includes(loggedInUser._id)) {
+        post.liked.push(loggedInUser._id);
+      }
+      return post.save() //return: waiting for .save before moving to redirect
+    })
+    .then (post => {
+      res.redirect(`/profile/posts/details/${postIdToLike}`);
     })
     .catch((err) => {
       next(err);
@@ -170,6 +194,10 @@ router.get("/profile", (req, res, next) => {
     .sort({ created_at: -1 })
     .populate({ path: "owner" })
     .then((posts) => {
+      posts.forEach(post => {
+        // replace spaces in URL
+        post.image = encodeURI(post.image);
+      });
       console.log("populated", posts);
       res.render("profile/profile", {
         postsList: posts,
