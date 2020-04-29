@@ -194,6 +194,10 @@ router.get("/profile", (req, res, next) => {
     .sort({ created_at: -1 })
     .populate({ path: "owner" })
     .then((posts) => {
+      posts.forEach(post => {
+        // replace spaces in URL
+        post.image = encodeURI(post.image);
+      });
       console.log("populated", posts);
       res.render("profile/profile", {
         postsList: posts,
