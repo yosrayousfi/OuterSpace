@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user");
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+
 router.get("/logout", (req, res, next) => {
   console.log("lougout rounte found");
   req.logout();
@@ -22,7 +23,11 @@ router.get("/posts/details/:id", (req, res) => {
     })
     .then((post) => {
       console.log(post);
-      res.render("profile/postDetails", { post: post });
+      res.render("profile/postDetails", { 
+        post: post,
+        alreadyLiked: req.user.liked.includes(req.params.id),
+        isLoggedInUser: req.user._id.equals(post.owner),
+      });
     });
 });
 router.get("/addPost", (req, res, next) => {
@@ -127,7 +132,7 @@ router.post("/search", (req, res, next) => {
     })
     .catch((err) => console.log(err));
 });
-//POST add route to follow another user
+//POST follow another user
 router.post("/:userID/follow", (req, res, next) => {
   const loggedInUser = req.user;
   const userIdToFollow = req.params.userID;
@@ -143,7 +148,26 @@ router.post("/:userID/follow", (req, res, next) => {
       next(err);
     });
 });
-//POST share data from api to database (pic-of-day, rovers)
+//POST save liked posts to user profile in database
+router.post("/posts/:postID/like", (req, res, next) => {
+  const loggedInUser = req.user;
+  const postIdToLike = req.params.postID;
+  
+  Post.findById(postIdToLike)
+    .then((post) => {
+      if (!loggedInUser._id.equals(post.owner) && !loggedInUser.liked.includes(postIdToLike)) {
+        loggedInUser.liked.push(postIdToLike);
+      }
+      return loggedInUser.save() //return: waiting for .save before moving to redirect
+    })
+    .then (user => {
+      res.redirect(`/profile/posts/details/${postIdToLike}`);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+//POST share data from api to database
 router.post("/share", (req, res, next) => {
     Post.create({
       image: req.body.image,
