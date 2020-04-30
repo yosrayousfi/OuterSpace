@@ -948,12 +948,22 @@ input {
   padding: 20px;
 }
 
+.post-details.bigger {
+  font-size: 40px
+}
+
 .edit-post-description {
   font-size: 36px
 }
 
 .edit-delete-post {
   color: silver
+}
+
+.galaxy-body {
+  background-image: url("../images/profile-background.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .like-post-btn {
@@ -988,10 +998,30 @@ h2 {
   height: 100px;
   border-radius: 5px;
   max-width: 300px;
+  font-size: 24px;
+  background-color: #222;
+  color: silver;
+  border: none;
 }
+
+.textarea.longer {
+  max-width: 500px;
+  height: 60px;
+  font-size: 20px;
+  background-color: transparent;
+  border: 1px solid silver;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 
 .one-comment {
   margin-top: 1rem
+}
+
+.edit-post {
+  color: silver
+  font-size: 24px;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Arima+Madurai:300,400,700,900");
