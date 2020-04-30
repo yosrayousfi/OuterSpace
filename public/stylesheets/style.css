@@ -1416,3 +1416,53 @@ body {
     box-shadow: 0 0 30px #ffd2feff;
   }
 }
+
+/* edit profile */
+
+form .btn {
+  border-radius: 0px;
+  border-color: transparent;
+}
+
+.btn.btn-default {
+  background: #ebebeb;
+  color: #8f9096;
+}
+
+.profileCard {
+  background-color: #fff;
+  bottom: 0;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0);
+  box-shadow: 0 0 3px rgba(0, 0, 0);
+  color: black;
+  height: 39em;
+  left: 0;
+  margin: auto;
+  max-width: 37em;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+
+  border-radius: 25px;
+}
+
+.profileCard a {
+  color: black;
+}
+
+.profileCard img {
+  border: 3px solid #ddd;
+  border-radius: 50%;
+  background-clip: padding-box;
+  margin: 5em 0;
+}
+
+.profileCard .btn {
+  border: 1px solid #ddd;
+  display: block;
+  margin: 0 auto 2em auto;
+  padding: 0.5em 0;
+  text-transform: uppercase;
+  width: 90%;
+}

@@ -1,21 +1,70 @@
-<div class="profile-edit">
-  <div>
-    <h2>Update your profile</h2>
+<style>
+  body {
+    background: url(.././images/APOD.jpg);
+
+  }
+
+  h2 {
+    color: black;
+  }
+</style>
+
+<div class="profileCard">
+  <div class="col-md-20">
+    <div class="container content clear-fix">
+      <h2 class="mt-5 mb-5">Profile Settings</h2>
       <form action="/profile/edit" method="post" enctype="multipart/form-data">
-        <label>Occupation:</label>
-        <input type="text" name="bio">
+        <div class="row" style="height: 100%;">
+          <div class="col-md-4">
+            <div href="#" class="d-inline">
+              {{#with profileOwner}}
+              {{#if imgPath}}
+              <img src="{{imgPath}}" alt="image" width="130px" style="margin: 0;"><br />
+              {{else}}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Neil_Armstrong.jpg" alt="Short description"
+                width="130px" style="margin: 0;" /><br />
+              {{/if}}
+              <p class="pl-2 mt-2">
+                <div class="form-group">
+                  <input type="file" class="form-control" name="photo">
+                </div>
+              </p>
+            </div>
+          </div>
 
-        <label>Birthday:</label>
-        <input type="text" name="dob">
+          <div class="col-md-8">
+            <div class="container">
+              <form>
+                <div class="form-group">
+                  <label for="fullName">Occupation</label>
+                  <input type="text" value="{{bio}}" class="form-control" name="bio">
+                </div>
+                <div class="form-group">
+                  <label for="origin">Country</label>
+                  <input type="text" value="{{origin}}" class="form-control" name="origin">
+                </div>
+                <div class="form-group">
+                  <label for="birthday">Birthday</label>
+                  <input type="date" class="form-control" value="{{dob}}" name="dob">
+                </div>
+                {{/with}}
+                <div class="row mt-5">
+                  <div class="col">
+                    <input type="submit" value="SAVE" class="btn btn-default btn-block">
+                  </div>
 
-        <label>Country:</label>
-        <input type="text" name="origin">
-  
-        <label>Photo:</label>
-        <input type="file" name="photo">
-  
-        <input type="submit" value="SAVE">
-        <input type="submit" value="SAVE">
+                  <div class="col">
+                    <button type="button" class="btn  btn-block">
+                      <a href="./profile">Cancel</a>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </form>
+
+    </div>
   </div>
 </div>
