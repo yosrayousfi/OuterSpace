@@ -625,6 +625,20 @@ input {
   padding: 20px;
 }
 
+.caption {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: left;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
+  transition: all 0.5s ease;
+  color: whitesmoke;
+  font-size: 18px;
+  padding: 20px
+}
+
 .box a:hover .caption {
   opacity: 1;
   transition: all 0.5s ease;
@@ -1088,33 +1102,23 @@ header {
   font-size: 18px;
 }
 
-.card .thumb-wrapper {
-  width: 100%;
+.thumb-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
 
-.card .thumb-wrapper:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.card .thumb-wrapper .thumb-unit {
-  width: 25%;
-  cursor: pointer;
-  background-color: rgb(128, 128, 128, 0.3);
-  box-shadow: 2px 2px 7px 1px white;
+.profile-unit {
+  width: 120px;
+  height: 120px;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  float: left;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem; 
   position: relative;
+  
 }
 
-.card .thumb-wrapper .thumb-unit:before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
 
 .status {
   width: 100%;
