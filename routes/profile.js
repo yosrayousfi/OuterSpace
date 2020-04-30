@@ -220,15 +220,15 @@ router.post("/share", (req, res, next) => {
 });
 //your own profile
 router.get("/profile", (req, res, next) => {
-  console.log("following!!", req.user.following);
-  User.populate(req.user, { path: "following" }).then((populatedUser) => {
-    console.log("populated following!!", populatedUser.following);
-  });
-
-  Post.find({ owner: req.user._id })
-    //sort by the most recent post
-    .sort({ created_at: -1 })
-    .populate({ path: "owner" })
+  console.log('following!!', req.user.following)
+  User.populate(req.user, {path: "following"})
+    .then(populatedUser => {
+      console.log('populated following!!', populatedUser.following)
+      return Post.find({ owner: req.user._id })
+      //sort by the most recent post
+      .sort({ created_at: -1 })
+      .populate({ path: "owner" })
+    })
     .then((posts) => {
       posts.forEach((post) => {
         // replace spaces in URL
@@ -250,7 +250,9 @@ router.get("/profile", (req, res, next) => {
 //others profile
 router.get("/:id", (req, res, next) => {
   console.log("id selected", req.params.id);
+  
   User.findById(req.params.id)
+    .populate({path: "following"})
     .then((user) => {
       console.log("user selected", user);
       Post.find({ owner: req.params.id })
