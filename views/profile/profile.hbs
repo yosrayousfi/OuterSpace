@@ -69,7 +69,6 @@
             <p class="profile-card__job all">{{this.email}}</p>
           </div>
           <div class="profile-card__footer all">
-            <p class="profile-card__date all">Feb 10 2018</p>
             <p class=""></p>
           </div>
           {{/with}}
@@ -79,7 +78,7 @@
       {{else}}
       <div class="card">
         {{#if alreadyFollowed}}
-        <p>your Outer Spaces are connected.</p>
+        <p>Outer Spaces connected.</p>
         {{else}}
         <form action="/profile/{{profileOwner._id}}/follow" method="POST" >
           <button type="submit" class="btn btn-sm btn-outline-secondary">follow this person</button>
@@ -107,9 +106,9 @@
          {{/with}}
         <div class="thumb-wrapper">
         {{#each profileOwner.following}} 
-          <div class="thumb-unit">
-            <div>{{this.username}}</div>
-          </div>
+        <div class="profile-unit" style="background-image: url({{this.imgPath}});" >
+          <div class="caption">{{this.username}}</div>
+        </div>
         {{/each}}
         </div>
       </div> 

@@ -60,19 +60,16 @@ router.get("/edit", (req, res, next) => {
 });
 //POST user upload profile picture
 router.post("/edit", uploadCloud.single("photo"), (req, res, next) => {
-  const imgPath = req.file.url;
-  const imgName = req.file.originalname;
-
-  req.user.imgPath = req.file.url;
-  req.user.imgName = req.file.originalname;
+  if (req.file) {
+    req.user.imgPath = req.file.url;
+    req.user.imgName = req.file.originalname;
+  } 
   req.user.bio = req.body.bio;
   req.user.dob = req.body.dob;
   req.user.origin = req.body.origin;
-
-  req.user
-    .save()
-    .then((user) => {
-      console.log(`Success ${user} was added to the database`);
+  req.user.save()
+    .then(user => {
+      console.log(`Success ${user} was updated to the database`);
       res.redirect("/profile/profile");
     })
     .catch((error) => {
