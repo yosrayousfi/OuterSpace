@@ -35,6 +35,9 @@ hbs.registerHelper("ifCond", function (v1, v2, options) {
   }
   return options.inverse(this);
 });
+hbs.registerHelper("splitString", function (str) {
+  return str.slice(0, 100);
+});
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
