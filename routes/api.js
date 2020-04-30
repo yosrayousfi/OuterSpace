@@ -108,7 +108,7 @@ router.post("/imagesByDate", (req, res, next) => {
     });
 });
 router.get("/astroids", function (req, res, next) {
-  res.render("astroides");
+  res.render("astroides", { layout: "layout2.hbs" });
 });
 router.post("/astroides", (req, res, next) => {
   const date = req.body.date;
@@ -119,6 +119,7 @@ router.post("/astroides", (req, res, next) => {
     .then((data) => {
       res.render("astroides", {
         data: data.near_earth_objects,
+        layout: "layout2.hbs",
       });
     })
     .catch((err) => {

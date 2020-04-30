@@ -1,40 +1,71 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<main>
+  <section class="slides">
+    <section class="slides-nav"></section>
+    <section class="slide is-active" id="sec4">
+      <div class="slide__content">
+        <figure class="slide__figure">
+          <div class="slide__img" style="
+              background: url(https://miro.medium.com/max/3840/1*-ivLG-a16m6DxXDBWNo-0A.jpeg);
+              background-size: cover;
+            "></div>
+        </figure>
+        <header class="slide__header" style="overflow-y: scroll;">
+          {{#if data}}
+          <h2 class="slide__title" style="overflow-y: scroll;">
+            <span class="title-line" style="font-size: 0.3em;">
+              <form action="/api/astroides" method="POST">
+                <input type="text" name="date" placeholder='YYYY-MM-DD' class="mr-2">
+                <button type="submit">search</button>
+              </form>
+            </span>
 
-<form action="/api/astroides" method="POST">
-  <input type="text" name="date" placeholder='YYYY-MM-DD' class="mr-2">
-  <button type="submit">search</button>
-</form>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 mt-5">
-      <div class="card">
-        <div class="card-header">Asteroids - Near Earth Object Web Services</div>
+            <span class="title-line" style="font-size: 0.2em;overflow-y: scroll;">
+              <div class="card-body" style="overflow-y: scroll;">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Reference ID</th>
+                      <th>Asteroid Name</th>
+                      <th>Nasa Asteroid URL</th>
+                      <th>Date Close to Earth</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each data}}
+                    <tr>
+                      <td>{{ this.neo_reference_id }}</td>
+                      <td>{{ this.name}}</td>
+                      <td><a href="{{this.nasa_jpl_url}};old=0;orb=1;cov=0;log=0;cad=0#orb">{{this.nasa_jpl_url}}</a>
+                      </td>
+                      <td>{{ this.close_approach_data.[0].close_approach_date }}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </span>
 
-        <div class="card-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Reference ID</th>
-                <th>Asteroid Name</th>
-                <th>Nasa Asteroid URL</th>
-                <th>Date Close to Earth</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each data}}
-              <tr>
-                <td>{{ this.neo_reference_id }}</td>
-                <td>{{ this.name}}</td>
-               <td><a href="{{this.nasa_jpl_url}};old=0;orb=1;cov=0;log=0;cad=0#orb">{{this.nasa_jpl_url}}</a></td>
-                <td>{{ this.close_approach_data.[0].close_approach_date }}</td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-        <div class="card-footer">Neo - Browse</div>
+          </h2>
+          {{else}}
+          <h2 class="slide__title">
+            <span class="title-line"><span>
+                <a href="/api/astroids" style="text-decoration: none; color: inherit;">
+                  Asteroids - NeoWs</a>
+              </span></span>
+            <br />
+            <br />
+            <span class="title-line" style="font-size: 0.3em;">
+              <form action="/api/astroides" method="POST">
+                <input type="text" name="date" placeholder='YYYY-MM-DD' class="mr-2">
+                <button type="submit">search</button>
+              </form>
+            </span>
+          </h2>
+          {{/if}}
+
+
+        </header>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
+  </section>
+</main>
