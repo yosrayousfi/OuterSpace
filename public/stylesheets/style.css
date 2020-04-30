@@ -1,3 +1,6 @@
+.body-background {
+  font-family: 'Cabin', sans-serif;
+}
 .modal {
   position: fixed;
   z-index: 1000;
@@ -529,13 +532,7 @@ input {
   animation-delay: 60s;
 } */
 
-.follow-btn {
-  background-color: white;
-  color: black;
-  padding: 10px 15px;
-  text-align: center;
-  border: solid #43a3e6;
-}
+
 
 @keyframes imageAnimation {
   0% {
@@ -832,11 +829,11 @@ input {
   margin-bottom: 2px;
   color: white;
   font-size: var(--fontLarge);
-  font-weight: var(--fontLight);
+  /* font-weight: var(--fontlight); */
+  font-weight: 900;
   letter-spacing: 0.1rem;
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
   background: -webkit-linear-gradient(white, #a1a1a1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -941,6 +938,10 @@ input {
   color: silver;
 }
 
+.edit-delete-post {
+  color: silver
+}
+
 .like-post-btn {
   color: white;
   background-color: black;
@@ -997,6 +998,7 @@ header {
   -webkit-box-align: center;
   align-items: center;
   padding: 15px 20px;
+  
 }
 
 .navigation {
@@ -1012,6 +1014,10 @@ header {
 .navigation .text {
   text-transform: uppercase;
   margin-left: 20px;
+}
+
+.navigation a, .other a {
+  color: white;
 }
 
 .awesome-form {
@@ -1032,6 +1038,7 @@ header {
   font-size: 15px;
   font-weight: 300;
   letter-spacing: 1px;
+  font-style: italic;
 }
 
 .other {
@@ -1042,6 +1049,7 @@ header {
   -webkit-box-align: center;
   align-items: center;
   font-size: 20px;
+
 }
 
 .other .user-info {
@@ -1050,6 +1058,7 @@ header {
   -webkit-box-align: center;
   align-items: center;
   margin-right: 10px;
+  
 }
 
 .other .user-info a {
@@ -1072,9 +1081,37 @@ header {
   margin: 30px auto;
 }
 
+.body-background {
+  background-image: url("../images/profile-background.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.follow-btn {
+  /* box-shadow: 2px 2px 7px 1px white; */
+  background: rgb(128, 128, 128, 0.3);
+  width: 30%;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: grey;
+  font-size: larger;
+}
+
+
+.description-card {
+  margin-bottom: 20px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .card {
   box-shadow: 2px 2px 7px 1px white;
   background: rgb(128, 128, 128, 0.3);
+  
   width: 100%;
   padding: 20px;
   border-radius: 5px;
@@ -1096,8 +1133,8 @@ header {
 }
 
 .card .title span {
-  color: #1b215f;
-  font-weight: 900;
+  color: whitesmoke;
+  font-weight: 200;
   margin-left: 10px;
   font-size: 18px;
 }
@@ -1119,7 +1156,6 @@ header {
   
 }
 
-
 .status {
   width: 100%;
 }
@@ -1134,7 +1170,7 @@ header {
 
 .icon-wrapper span {
   margin-left: 10px;
-  color: #1b215f;
+  color: gainsboro;
   font-weight: 900;
 }
 
@@ -1222,7 +1258,8 @@ body {
 @import url(https://fonts.googleapis.com/css?family=Rajdhani:300);
 
 * {
-  font-family: "Rajdhani", sans-serif;
+  /* font-family: "Rajdhani", sans-serif; */
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
