@@ -112,6 +112,15 @@ button {
   cursor: pointer;
 }
 
+.add-comment {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: bisque;
+}
+
 input {
   background-color: transparent;
   padding: 0;
@@ -936,6 +945,11 @@ input {
 
 .post-details {
   color: silver;
+  padding: 20px;
+}
+
+.edit-post-description {
+  font-size: 36px
 }
 
 .edit-delete-post {
@@ -943,9 +957,41 @@ input {
 }
 
 .like-post-btn {
-  color: white;
+  color: silver;
   background-color: black;
-  border: 1px solid white;
+  border: 1px solid silver;
+  padding: 0.8rem;
+  font-size: larger;
+}
+
+.comments-section {
+  /* width: 60%; */
+  background: #111;
+  padding: 20px;
+}
+.comments-container {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.commentors {
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.textarea {
+  display: block;
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+  max-width: 300px;
+}
+
+.one-comment {
+  margin-top: 1rem
 }
 
 @import url("https://fonts.googleapis.com/css?family=Arima+Madurai:300,400,700,900");
@@ -956,6 +1002,7 @@ input {
 
 body {
   background: #ececec;
+  margin: 0;
 }
 
 h1,
@@ -1104,6 +1151,11 @@ header {
   background: rgb(128, 128, 128, 0.3);
   color: silver;
   font-weight: normal;
+}
+
+.follow-btn.small {
+  font-size: 18px;
+  padding: 15px;
 }
 
 .follow-wrapper {
@@ -1260,6 +1312,7 @@ body {
   outline: 0;
   overflow: hidden;
 }
+
 
 /* sci fi design */
 
