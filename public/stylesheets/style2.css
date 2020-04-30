@@ -278,7 +278,7 @@ body {
 
 #sec1::after {
   content: "";
-  background: url(https://apod.nasa.gov/apod/image/1910/MilkyWaySaltFlat_Huerta_2048.jpg);
+  background: url(../images/APOD.jpg);
   /* opacity: 0.1; */
   top: 0;
   left: 0;
@@ -292,7 +292,7 @@ body {
 
 #sec2::after {
   content: "";
-  background: url(https://i.pinimg.com/originals/3a/53/75/3a537591a0cbbd4f34d418cd5f34f705.jpg);
+  background: url(../images/rover.jpg);
   /* opacity: 0.1; */
   top: 0;
   left: 0;
@@ -306,7 +306,7 @@ body {
 
 #sec3::after {
   content: "";
-  background: url(https://wallup.net/wp-content/uploads/2016/01/18775-Carlsberg-space-advertisements-stars-moon-astronaut-beer-Earth.jpg);
+  background: url(../images/moonBeer.jpg);
   /* opacity: 0.1; */
   top: 0;
   left: 0;
@@ -320,7 +320,7 @@ body {
 
 #sec4::after {
   content: "";
-  background: url(https://miro.medium.com/max/3840/1*-ivLG-a16m6DxXDBWNo-0A.jpeg);
+  background: url(../images/astroids.jpeg);
   /* opacity: 0.1; */
   top: 0;
   left: 0;
@@ -334,7 +334,7 @@ body {
 
 #sec5::after {
   content: "";
-  background: url(https://i.vimeocdn.com/video/533395478_1280x720.jpg);
+  background: url(../images/tv.png);
   /* opacity: 0.1; */
   top: 0;
   left: 0;
@@ -355,88 +355,84 @@ body {
   -webkit-box-align: center;
   align-items: center;
   overflow-y: hidden;
-
 }
 
+#carousel-container {
+  width: 500px;
+  height: 232px;
+  position: relative;
+  margin: 50px auto 0;
+  border: 10px solid #000;
+  border-radius: 10px;
+}
 
-  #carousel-container {
-    width: 500px;
-    height: 232px;
-    position: relative;
-    margin: 50px auto 0;
-    border: 10px solid #000;
-    border-radius: 10px;
-  }
+#carousel-container > div:first-child {
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0;
+}
 
-  #carousel-container>div:first-child {
-    overflow: hidden;
-    max-width: 100%;
-    margin: 0;
-  }
+#carousel {
+  position: relative;
+  width: 5000px;
+  height: 232px;
+  padding: 0;
+  margin: 0;
+}
 
-  #carousel {
-    position: relative;
-    width: 5000px;
-    height: 232px;
-    padding: 0;
-    margin: 0;
-  }
+.img {
+  float: left;
+  width: 500px;
+  height: 232px;
+}
 
-  .img {
-    float: left;
-    width: 500px;
-    height: 232px;
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
 
+.animate {
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+}
 
-  }
+.sld {
+  list-style: none;
+  position: relative;
+  float: left;
+  transform: translateX(-500px);
+  text-align: center;
+  color: white;
+}
 
-  .bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-  }
+#controls {
+  position: absolute;
+  width: 620px;
+  top: calc(50% - 25px);
+  margin: 0 -60px;
+}
 
-  .animate {
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    transition-property: transform;
-  }
+#controls span {
+  width: 50px;
+  cursor: pointer;
+  opacity: 0.4;
+}
 
-  .sld {
-    list-style: none;
-    position: relative;
-    float: left;
-    transform: translateX(-500px);
-    text-align: center;
-    color: white;
-  }
+#controls span:hover {
+  opacity: 1;
+}
 
-  #controls {
-    position: absolute;
-    width: 620px;
-    top: calc(50% - 25px);
-    margin: 0 -60px;
-  }
+#prev {
+  float: left;
+}
 
-  #controls span {
-    width: 50px;
-    cursor: pointer;
-    opacity: 0.4;
-  }
-
-  #controls span:hover {
-    opacity: 1;
-  }
-
-  #prev {
-    float: left;
-  }
-
-  #next {
-    float: right;
-  }
+#next {
+  float: right;
+}
