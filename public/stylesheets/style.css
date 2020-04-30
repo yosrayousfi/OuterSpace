@@ -960,12 +960,6 @@ input {
   color: silver
 }
 
-.galaxy-body {
-  background-image: url("../images/profile-background.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
 .like-post-btn {
   color: silver;
   background-color: black;
