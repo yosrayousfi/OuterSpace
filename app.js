@@ -35,6 +35,12 @@ hbs.registerHelper("ifCond", function (v1, v2, options) {
   }
   return options.inverse(this);
 });
+hbs.registerHelper("splitString", function (str) {
+  return str.slice(0, 100);
+});
+hbs.registerHelper("trim", function (str) {
+  return str.replace(/ /g, "%20");
+});
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -61,7 +67,7 @@ app.use("/profile", profile);
 app.use("/api", api);
 // app.use("/users", users);
 mongoose
-  .connect("mongodb://localhost/project2", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/project2", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
