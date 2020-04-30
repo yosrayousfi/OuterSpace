@@ -99,11 +99,12 @@
         <div class="text">
           <span><i class="fa fa-map"></i></span>From {{this.origin}}
         </div>
-        {{/with}}
+       
       </div> 
     {{!-- display following list  --}}
       <div class="card">
         <div class="title">Connecting Outer Spaces<span>{{profileOwner.following.length}} outer space</span></div>
+         {{/with}}
         <div class="thumb-wrapper">
         {{#each profileOwner.following}} 
           <div class="thumb-unit">
