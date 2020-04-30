@@ -1,36 +1,47 @@
 <div class="post-details">
-  <h1>post details</h1>
   <img src="{{post.image}}">
-  <label for="description">Description: </label>
-  <p>{{post.description}}</p>
+
+  <div >
+  <p class="edit-post-description">{{post.description}}</p>
   {{!-- add like-the-post button --}}
-  {{#unless isLoggedInUser}}
+  {{#if isLoggedInUser}}
+    <a class="follow-btn small" href="/profile/posts/edit/{{post._id}}"> Edit post </a>
+    <a class="follow-btn small" href="/profile/posts/delete/{{post._id}}"> Delete post </a>
+    {{else}}
     {{#if alreadyLiked}}
-      <p>Liked</p>
+      <p class="follow-btn disabled">Liked</p>
     {{else}}
       <form action="/profile/posts/{{post._id}}/like" method="POST" >
-        <button type="submit" class="like-post-btn">Like the post</button>
+        <button type="submit" class="follow-btn">Like the post</button>
       </form>
     {{/if}}
-  {{/unless}}
-  <h2>comments</h2>
-  {{#if post.comments}}
-  {{#each post.comments}}
-  <label>comment:</label>
-  <p>{{this.comment}}</p>
-  <label>owner:</label>
-  <p>{{this.owner.username}}</p>
-  {{/each}}
-  {{else}}
-  <p>No comments yet</p>
   {{/if}}
-  <p>Add a comment</p>
-  <form action="/profile/posts/{{post._id}}/comment" method="POST">
-    <label for="">Comment:</label>
-    <textarea type="text" name="comment"></textarea>
-    <button type="submit">ADD</button>
-  </form>
-  <br>
-  <a href="/profile/posts/edit/{{post._id}}">Edit post</a>
-  <a href="/profile/posts/delete/{{post._id}}">Delete post</a>
+  </div>
+  
 </div>
+  {{!-- comments --}}
+<div class="comments-section">
+  <div class="comments-container">
+    <form action="/profile/posts/{{post._id}}/comment" method="POST">
+      <label for="">Leave a comment:</label>
+      <textarea type="text" name="comment" class="textarea"></textarea>
+      <button class="follow-btn small" type="submit">Add</button>
+    </form>
+  <div >
+  
+      {{!-- <h2>comments</h2> --}}
+      {{#if post.comments}}
+      {{#each post.comments}}
+      <div class="one-comment">
+        <p>{{this.comment}}</p> 
+        <p class="commentors">by {{this.owner.username}}</p>
+      </div>
+      {{/each}}
+      {{else}}
+      <p>No comments yet</p>
+      {{/if}}
+  </div>
+ </div>
+</div>
+    
+  

@@ -63,22 +63,16 @@ router.get("/edit", (req, res, next) => {
 });
 //POST user upload profile picture
 router.post("/edit", uploadCloud.single("photo"), (req, res, next) => {
-  // const imgPath = req.file.url;
-  // const imgName = req.file.originalname;
   if (req.file) {
     req.user.imgPath = req.file.url;
     req.user.imgName = req.file.originalname;
-  }
-  if (req.body) {
-    req.user.bio = req.body.bio;
-    req.user.dob = req.body.dob;
-    req.user.origin = req.body.origin;
-  }
-
-  req.user
-    .save()
-    .then((user) => {
-      console.log(`Success ${user} was added to the database`);
+  } 
+  req.user.bio = req.body.bio;
+  req.user.dob = req.body.dob;
+  req.user.origin = req.body.origin;
+  req.user.save()
+    .then(user => {
+      console.log(`Success ${user} was updated to the database`);
       res.redirect("/profile/profile");
     })
     .catch((error) => {
@@ -229,15 +223,15 @@ router.post("/share", (req, res, next) => {
 });
 //your own profile
 router.get("/profile", (req, res, next) => {
-  //console.log("following!!", req.user.following);
-  User.populate(req.user, { path: "following" }).then((populatedUser) => {
-    // console.log("populated following!!", populatedUser.following);
-  });
-  //console.log("redirected");
-  Post.find({ owner: req.user._id })
-    //sort by the most recent post
-    .sort({ created_at: -1 })
-    .populate({ path: "owner" })
+  console.log('following!!', req.user.following)
+  User.populate(req.user, {path: "following"})
+    .then(populatedUser => {
+      console.log('populated following!!', populatedUser.following)
+      return Post.find({ owner: req.user._id })
+      //sort by the most recent post
+      .sort({ created_at: -1 })
+      .populate({ path: "owner" })
+    })
     .then((posts) => {
       console.log("here");
       posts.forEach((post) => {
@@ -261,7 +255,9 @@ router.get("/profile", (req, res, next) => {
 //others profile
 router.get("/:id", (req, res, next) => {
   console.log("id selected", req.params.id);
+  
   User.findById(req.params.id)
+    .populate({path: "following"})
     .then((user) => {
       console.log("user selected", user);
       Post.find({ owner: req.params.id })
