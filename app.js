@@ -38,6 +38,9 @@ hbs.registerHelper("ifCond", function (v1, v2, options) {
 hbs.registerHelper("splitString", function (str) {
   return str.slice(0, 100);
 });
+hbs.registerHelper("trim", function (str) {
+  return str.replace(/ /g, "%20");
+});
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -3,11 +3,11 @@
     <section class="slides-nav"></section>
     <section class="slide is-active" id="sec1">
       <div class="slide__content">
-        {{#with picDay}}
+        {{#with data}}
         <style>
           #sec1::after {
             content: "";
-            background: url(./images/APOD.jpg);
+            background: url(../images/moonBeer.jpg);
             /* opacity: 0.1; */
             top: 0;
             left: 0;
@@ -21,11 +21,9 @@
         </style>
         <figure class="slide__figure">
           <div class="slide__img" style="
-              background: url({{this.url}});
-              background-size: cover;
-            "></div>
+              background: url({{trim url}}); background-size: cover; "></div>
         </figure>
-        <header class="slide__header">
+        <header class=" slide__header">
           <h2 class="slide__title">
 
             <span class="title-line"><span>
@@ -40,11 +38,7 @@
             <span class="title-line">
               <p style="font-size: 0.15em; line-height: 1.7em;">
                 title: {{this.title}} <br>
-                copyright: {{this.copyright}}
-                <br>
-                date: {{this.date}} <br>
-                explanation: {{this.explanation}} <br>
-                media_type: {{this.media_type}} <br>
+                explanation: {{this.description}} <br>
               </p>
             </span>
           </h2>

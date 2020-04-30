@@ -49,7 +49,12 @@
                     <input name="description" value="{{title}}" hidden>
                     <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
                   </form>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                    <form action="/api/galleryDetails" method="POST">
+                  <input name="image" value="{{../links.[0].href}}" hidden>
+                  <input name="title" value="{{title}}" hidden>
+                  <input name="description" value="{{description}}" hidden>
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Details</button>
+                </form>
                 </div>
                 <small class="text-muted">{{date_created}}</small>
               </div>

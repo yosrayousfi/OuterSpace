@@ -129,5 +129,17 @@ router.post("/astroides", (req, res, next) => {
 router.get("/live", function (req, res, next) {
   res.render("live", { layout: "layout2.hbs" });
 });
-
+router.post("/galleryDetails", (req, res, next) => {
+  const { image, description, title } = req.body;
+  console.log("imageeeeeeeeeee", image.replace(/ /g, "%20"));
+  const img = {
+    url: image,
+    description: description,
+    title: title,
+  };
+  res.render("galleryDetails", {
+    data: img,
+    layout: "layout2.hbs",
+  });
+});
 module.exports = router;
