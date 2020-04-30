@@ -1,44 +1,130 @@
-<script>
-  function updateTextInput(val) {
-    document.getElementById('textInput').value = val;
-  }
-</script>
+<main>
+  <section class="slides">
+    <section class="slide is-active" id="sec2">
+
+      <div class="slide__content">
+        <figure class="slide__figure">
+
+          <div class="slide__img" style="
+              background: url(https://i.pinimg.com/originals/3a/53/75/3a537591a0cbbd4f34d418cd5f34f705.jpg);
+              background-size: cover;
+            "></div>
+        </figure>
+        <header class="slide__header2">
+
+          {{#if rover}}
+
+          <h2 class="slide__title" id="img">
 
 
-<form action="/api/rovers" method="POST">
-  <input type="radio" name="rover" value="curiosity" style="width: auto;" checked>curiosity</input>
-  <input type="radio" name="rover" value="opportunity" style="width: auto;">opportunity</input>
-  <input type="radio" name="rover" value="spirit" style="width: auto;">spirit</input>
-  <br />
-  <input type="range" id="sol" name="solDan" min="0" max="1000" value="0" step="10"
-    onchange="updateTextInput(this.value);">
-  <input type="text" id="textInput" value="0">
-  <label for="sol">Sol</label>
-  <br />
-  {{!-- Camera:
-  <input type="checkbox" id="FHAZ" name="cam1" value="FHAZ" />
-  <input type="checkbox" id="RHAZ" name="cam2" value="RHAZ" />
-  <input type="checkbox" id="NAVCAM" name="cam3" value="NAVCAM" />
-date:
-  <br /> --}}
-  <button type="submit">request data</button>
-</form>
-{{#with rover}}
-<p>name: {{this.name}}</p>
-<p>landing_date: {{this.landing_date}} </p>
-<p>launch_date: {{this.launch_date}}</p>
-<p>status: {{this.status}}</p>
-<p>max_sol: {{this.max_sol}}</p>
-<p>max_date: {{this.max_date}}</p>
-<p>total_photos: {{this.total_photos}}</p>
-{{/with}}
-{{#each photos}}
-<p>{{this.camera.full_name}}</p>
-<img src="{{this.img_src}}" alt="">
+            <div id="carousel-container">
 
-<form action="/profile/share" method="POST" >
-  <input name="image" value="{{this.img_src}}" hidden>
-  <input name="description" value="Rover {{../rover.name}} - {{this.camera.full_name}}" hidden>
-  <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
-</form>
-{{/each}}
+              <div>
+                <ul id="carousel" class="animate">
+                  {{#each photos}}
+
+                  <li class="sld animate">
+                    <img src="{{this.img_src}}" class="img" />
+                    <script>()
+                      document.getElementById(img).style =
+                    </script>
+
+                    <div class="bottom-left" style="font-size: 0.2em;">
+                      Took By: {{this.camera.full_name}}
+                      <form action="/profile/share" method="POST" style="margin-bottom:0">
+                        <input name="image" value="{{this.img_src}}" hidden>
+                        <input name="description" value="Rover {{../rover.name}} - {{this.camera.full_name}}" hidden>
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
+                      </form>
+                    </div>
+                  </li>
+                  {{/each}}
+
+
+                </ul>
+              </div>
+              <div id="controls">
+                <span id="prev"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1014830/prev.png" /></span>
+                <span id="next"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1014830/next.png" /></span>
+              </div>
+            </div>
+            {{!-- <span class="title-line"><span> --}}
+
+            <span class="title-line" style="font-size: 0.3em;">
+              {{#with rover}}
+              name: {{this.name}}
+              landing_date: {{this.landing_date}}
+              launch_date: {{this.launch_date}}
+              status: {{this.status}}
+              max_sol: {{this.max_sol}}
+              max_date: {{this.max_date}}
+              total_photos: {{this.total_photos}}
+              {{/with}}
+            </span>
+
+            <span class=" title-line" {{!-- style="    margin-bottom: 1.9rem;" --}}>
+              <form action="/api/rovers" method="POST" style="margin-bottom: 0 ;height:33.5%;">
+                <div>
+                  <input type="radio" name="rover" value="curiosity" style="width:auto;" checked>
+                  <label style="font-size: 0.3em; margin-left: -1rem">curiosity</label>
+                  </input>
+                  <input type="radio" name="rover" value="opportunity" style="width: auto;">
+                  <label for="rover" style="font-size: 0.3em;margin-left: -1rem">opportunity</label>
+                  </input>
+                  <input type="radio" name="rover" value="spirit" style="width: auto;">
+                  <label for="rover" style="font-size: 0.3em;margin-left: -1rem">spirit</label>
+                  </input>
+                </div>
+                <div>
+                  <label for="sol" style="font-size: 0.3em;"> Sol</label>
+                  <input type="range" id="sol" name="solDan" min="0" max="1000" value="0" step="10"
+                    onchange="updateTextInput(this.value);">
+                  <input type="text" id="textInput" value="0"> <button type="submit">request data</button>
+                </div>
+
+              </form>
+
+            </span>
+          </h2>
+
+
+          {{else}}
+
+          <h2 class="slide__title">
+
+
+            <span class="title-line" {{!-- style="    margin-bottom: 1.9rem;" --}}>
+              <form action="/api/rovers" method="POST" style="margin-bottom: 0 ;height:33.5%;">
+                <div>
+                  <input type="radio" name="rover" value="curiosity" style="width:auto;" checked>
+                  <label style="font-size: 0.3em; margin-left: -1rem">curiosity</label>
+                  </input>
+                  <input type="radio" name="rover" value="opportunity" style="width: auto;">
+                  <label for="rover" style="font-size: 0.3em;margin-left: -1rem">opportunity</label>
+                  </input>
+                  <input type="radio" name="rover" value="spirit" style="width: auto;">
+                  <label for="rover" style="font-size: 0.3em;margin-left: -1rem">spirit</label>
+                  </input>
+                </div>
+                <div>
+                  <label for="sol" style="font-size: 0.3em;"> Sol</label>
+                  <input type="range" id="sol" name="solDan" min="0" max="1000" value="0" step="10"
+                    onchange="updateTextInput(this.value);">
+                  <input type="text" id="textInput" value="0"> <button type="submit">request data</button>
+                </div>
+
+              </form>
+
+            </span>
+
+
+
+          </h2>
+          {{/if}}
+
+        </header>
+      </div>
+    </section>
+
+  </section>
+</main>

@@ -13,12 +13,38 @@
   <link rel="stylesheet" href="./public/stylesheets/style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script>
+    let fullButton = document.getElementById("full-button");
+    console.log(fullButton);
+    fullButton.addEventListener("click", full);
+    let fullScreen = false;
+    function full() {
+      let main = document.getElementById("main");
+      main.requestFullscreen();
+    }
+
+      // document.documentElement.requestFullscreen();
+      //var elem = document.documentElement;
+     // let main = document.getElementById("main");
+      //main.requestFullscreen();
+
+
+
+  </script>
 </head>
 
 <body>
-  {{{body}}}
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="/javascripts/script.js"></script>
+  <div id="main" class="main" style="width: 100%; height:100%">
+    {{{body}}}
+    <a href="#" id="full-button" @click="full()">
+      <i class="fa fa-arrows-alt fa-2x"></i>
+      <span class="nav-text">
+        Full Screen
+      </span>
+    </a>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="/javascripts/script.js"></script>
+  </div>
 </body>
 
 </html>

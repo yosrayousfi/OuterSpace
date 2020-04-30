@@ -1,14 +1,56 @@
-{{#with picDay}}
-<p>copyright: {{this.copyright}}</p>
-<p>date: {{this.date}}</p>
-<p>explanation: {{this.explanation}}</p>
-<p>media_type: {{this.media_type}}</p>
-<p>title: {{this.title}}</p>
-<img src="{{this.url}}" alt="">
+<main>
+  <section class="slides">
+    <section class="slides-nav"></section>
+    <section class="slide is-active" id="sec1">
+      <div class="slide__content">
+        {{#with picDay}}
+        <style>
+          #sec1::after {
+            content: "";
+            background: url(https://apod.nasa.gov/apod/image/1910/MilkyWaySaltFlat_Huerta_2048.jpg);
+            /* opacity: 0.1; */
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+            background-size: cover;
+            box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.7) inset;
+          }
+        </style>
+        <figure class="slide__figure">
+          <div class="slide__img" style="
+              background: url({{this.url}});
+              background-size: cover;
+            "></div>
+        </figure>
+        <header class="slide__header">
+          <h2 class="slide__title">
 
-<form action="/profile/share" method="POST" >
-  <input name="image" value="{{this.url}}" hidden>
-  <input name="description" value="{{this.title}}" hidden>
-  <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
-</form>
-{{/with}}
+            <span class="title-line"><span>
+                <form action="/profile/share" method="POST">
+                  <input name="image" value="{{this.url}}" hidden>
+                  <input name="description" value="{{this.title}}" hidden>
+                  <button type="submit" class="follow-btn">share</button>
+                </form>
+              </span></span>
+            <br />
+            <br />
+            <span class="title-line">
+              <p style="font-size: 0.15em; line-height: 1.7em;">
+                title: {{this.title}} <br>
+                copyright: {{this.copyright}}
+                <br>
+                date: {{this.date}} <br>
+                explanation: {{this.explanation}} <br>
+                media_type: {{this.media_type}} <br>
+              </p>
+            </span>
+          </h2>
+        </header>
+        {{/with}}
+      </div>
+    </section>
+  </section>
+</main>

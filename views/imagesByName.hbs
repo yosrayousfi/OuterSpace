@@ -1,59 +1,42 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<main>
+  <section class="slides">
+    <section class="slides-nav"></section>
+    <section id="sec3" class="slide is-active">
+      <div class="slide__content">
+        <figure class="slide__figure">
+          <div class="slide__img" style="
+              background: url(https://wallup.net/wp-content/uploads/2016/01/18775-Carlsberg-space-advertisements-stars-moon-astronaut-beer-Earth.jpg);
+              background-size: cover;
+            "></div>
+        </figure>
+        <header class="slide__header">
+          <h2 class="slide__title">
+            <span class="title-line">
+              <a href="/api/imagesByName" style="text-decoration: none; color: inherit;">Gallery</a>
+            </span>
+            <span class="title-line">
+              <br>
+              <form action="/api/imagesByName" method="POST" style="margin-bottom:1.3rem">
 
-<main role="main">
+                </style>
+                <input style="width: 75%; height:7%; " type="text" name="searchInput"
+                  placeholder='ex: sun,earth,mars...'>
+                <div>
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Images on NASA API</h1>
-      <p class="lead text-muted">Seach images from NASA archive</p>
-      <p>
-        <form action="/api/imagesByName" method="POST">
-          <input type="text" name="searchInput" placeholder='ex: sun,earth,mars...'>
-          <button id="btn">Search</button>
-        </form>
-
-      </p>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container" id='divresult'>
-      <div class="row">
-        {{#each images}}
-
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            {{#with this.links.[0]}}
-
-            <img class="card-img-top" src="{{this.href}}">
-            {{/with}}
-            {{#each this.data}}
-
-            <div class="card-body">
-              <h5>{{title}}</h5>
-              <p class="card-text">{{description}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <form action="/profile/share" method="POST" >
-                    <input name="image" value="{{../links.[0].href}}" hidden>
-                    <input name="description" value="{{title}}" hidden>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
-                  </form>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                  <button style="margin-top:1rem" class="search-button" id="btn">Search</button>
                 </div>
-                <small class="text-muted">{{date_created}}</small>
-              </div>
-            </div>
-            {{/each}}
 
-          </div>
-        </div>
-        {{/each}}
-
+              </form>
+            </span>
+            <span class="title-line">
+              <p style="font-size: 0.3em;">
+                “Sun, Earth, March, Aliens,, you name it!”
+              </p>
+            </span>
+          </h2>
+        </header>
       </div>
-    </div>
-  </div>
-
+    </section>
+  </section>
+  </section>
 </main>

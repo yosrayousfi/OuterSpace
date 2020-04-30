@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style>
+  body {
+    background: url(https://wallup.net/wp-content/uploads/2016/01/18775-Carlsberg-space-advertisements-stars-moon-astronaut-beer-Earth.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-y: scroll
+  }
+</style>
+<main role="main">
+
+  <section class="jumbotron text-center" style="background:transparent">
+    <div class="container">
+      <h1 class="jumbotron-heading" style="color:white">Gallery</h1>
+      <p class="lead" style="color:white">Seach images from NASA archive</p>
+      <p>
+        <form action="/api/imagesByName" method="POST">
+          <input type="text" name="searchInput" placeholder='ex: sun,earth,mars...'
+            style="color:white;border: 1px solid white;width:55%">
+          <div>
+            <br>
+            <button id="btn" style="background-color: white">Search</button>
+          </div>
+
+        </form>
+
+      </p>
+    </div>
+  </section>
+  <div class="album py-5" style="background:transparent">
+    <div class="container" id='divresult'>
+      <div class="row">
+        {{#each images}}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            {{#with this.links.[0]}}
+            <img class="card-img-top" src="{{this.href}}">
+            {{/with}}
+            {{#each this.data}}
+            <div class="card-body">
+              <h5>{{title}}</h5>
+              <p class="card-text">{{description}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <form action="/profile/share" method="POST">
+                    <input name="image" value="{{../links.[0].href}}" hidden>
+                    <input name="description" value="{{title}}" hidden>
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
+                  </form>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                </div>
+                <small class="text-muted">{{date_created}}</small>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>
