@@ -1,10 +1,173 @@
-<main>
-  <section class="slides">
-    <section class="slides-nav"></section>
-    <section class="slide is-active" id="sec1">
-      <div class="slide__content">
-        {{#with picDay}}
-        <style>
+<!--subHero-->
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Rajdhani:300,400");
+
+
+  .navbar {
+    left: 26rem
+  }
+
+
+  body {
+    background: url(https://images.unsplash.com/photo-1445905595283-21f8ae8a33d2?auto=format&fit=crop&w=1504&q=80);
+
+  }
+
+  .wrapper {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  header {
+    width: 960px;
+  }
+
+  nav {
+    float: left;
+  }
+
+  section {
+    float: right
+  }
+
+  nav {
+    width: 450px;
+
+  }
+
+  section {
+    width: 500px;
+    margin-left: 10px;
+  }
+
+  *,
+  a {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    color: white;
+  }
+
+  html {
+    font-size: 10.4px;
+
+  }
+
+  .container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+  }
+
+  #bg {
+    background-image: url("https://images.unsplash.com/photo-1445905595283-21f8ae8a33d2?auto=format&fit=crop&w=1504&q=80");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 0px 4rem;
+  }
+
+  .nasa {
+    height: 50px;
+    margin: 0px 0.6rem;
+  }
+
+  .line {
+    display: inline-block;
+    width: 4.5rem;
+    border-top: 3px solid white;
+    height: 25px;
+  }
+
+  .sans-serif {
+    font-family: sans-serif;
+    font-weight: 100;
+  }
+
+  .down {
+    display: none;
+    margin: 4rem auto;
+    font-size: 4rem;
+    padding-top: 0.1rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    border: solid 1px white;
+    border-radius: 100%;
+    transition: ease 0.5s all;
+  }
+
+  #hero h2 {
+    display: inline-block;
+    font-weight: 100;
+    font-size: 2rem;
+    padding: 0;
+  }
+
+  #subHero p {
+    font-size: 1.7rem;
+  }
+
+  #subHero #discoverBtn {
+    font-size: 1.5rem;
+    display: inline-block;
+    margin: 1rem auto;
+    padding: 1.2rem;
+    border-radius: 40px;
+    border: white solid 1px;
+    transition: ease 0.5s all;
+  }
+
+  #subHero #discoverBtn:hover,
+  #subHero #discoverBtn:active {
+    cursor: pointer;
+    color: black;
+    background: white;
+  }
+
+  .slide__figure {
+    height: 78%;
+    width: 50%;
+  }
+</style>
+
+<div class="wrapper">
+  <br>
+  <header>
+    <div id="hero">
+      <h2>ASTRONOMY PICTURE OF THE DAY</h2>
+      <i class="ion-ios-arrow-down down" id="tosubHero"></i>
+    </div>
+    <!--hero-->
+
+    <div id="subHero">
+      <div>
+        <div class="line"></div>
+        <img
+          src="https://vignette.wikia.nocookie.net/logopedia/images/6/66/NASA_logo.svg.png/revision/latest?cb=20121230054000"
+          alt="nasaLogo" class="nasa" />
+        <div class="line"></div>
+      </div>
+      <p class="sans-serif">
+        Each day an image of our fascinating universe is featured, along with a
+        brief explanation written by a professional astronomer
+      </p>
+      <a href="https://apod.nasa.gov/apod/archivepix.html" target="_blank">
+        <p id="discoverBtn" class="sans-serif">Discover the Cosmos</p>
+      </a>
+      <i class="ion-ios-arrow-down down" id="toapiContent1"></i>
+    </div>
+  </header>
+  {{#with picDay}}
+  {{!-- <style>
           #sec1::after {
             content: "";
             background: url(../images/APOD.jpg);
@@ -18,39 +181,48 @@
             background-size: cover;
             box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.7) inset;
           }
-        </style>
-        <figure class="slide__figure">
-          <div class="slide__img" style="
-              background: url({{this.url}});
-              background-size: cover;
-            "></div>
-        </figure>
-        <header class="slide__header">
-          <h2 class="slide__title">
+        </style> --}}
 
-            <span class="title-line"><span>
-                <form action="/profile/share" method="POST">
-                  <input name="image" value="{{this.url}}" hidden>
-                  <input name="description" value="{{this.title}}" hidden>
-                  <button type="submit" class="follow-btn">share</button>
-                </form>
-              </span></span>
-            <br />
-            <br />
-            <span class="title-line">
-              <p style="font-size: 0.15em; line-height: 1.7em;">
-                title: {{this.title}} <br>
-                copyright: {{this.copyright}}
-                <br>
-                date: {{this.date}} <br>
-                explanation: {{this.explanation}} <br>
-                media_type: {{this.media_type}} <br>
-              </p>
-            </span>
-          </h2>
-        </header>
-        {{/with}}
+
+  <nav>
+    <div class="container">
+      <img src="{{this.url}}" width="450px" height="400px" />
+      <div class="bottom-left">
+        <form action="/profile/share" method="POST">
+          <input name="image" value="{{this.url}}" hidden>
+          <input name="description" value="{{this.title}}" hidden>
+          <button type="submit" class="follow-btn" style="width:60px; height:30px ; color:black">share</button>
+        </form>
       </div>
-    </section>
+    </div>
+
+
+  </nav>
+  <section style="padding-top: 10px; padding-bottom:0; text-align: left;
+    margin-left: 10px;">
+    <h2 style="text-align: left;
+    margin-left: 10px;">
+      Title:
+    </h2>
+    <p style="font-size: 1.6em;
+    text-align: left; margin-left: 10px;">
+      {{this.title}}</p>
+
+
+    <h2 style="text-align: left;
+    margin-left: 10px;">
+      Date:
+    </h2>
+    <p style="font-size: 1.6em;
+    text-align: left; margin-left: 10px;">
+      {{this.date}}</p>
+    <h2 style="text-align: left;
+    margin-left: 10px;">
+      Explanation:
+    </h2>
+    <p style="font-size: 1.6em;
+    text-align: left; margin-left: 10px;">
+      {{this.explanation}}</p>
   </section>
-</main>
+  {{/with}}
+</div>

@@ -11,8 +11,8 @@
     <div class="icon"><i class="fa fa-align-left"></i></div>
     <div class="text">something</div>
     {{#if istheLogged}}
-    <div class="text"> <a href="/profile/addPost">New post</a>
-    </div>
+    {{!-- <div class="text"> <a href="/profile/addPost">New post</a>
+    </div> --}}
     <div class="text"> <a href="/profile/search">Friends</a>
     </div>
     {{/if}}
@@ -23,15 +23,15 @@
     </form>
   </div>
   <div class="other">
-      <div class="user-info">
-        <div class="text"><a href="/api/api">Home</a></div>
-      </div>
-  {{!-- profile setting btn --}} 
+    <div class="user-info">
+      <div class="text"><a href="/api/api">Home</a></div>
+    </div>
+    {{!-- profile setting btn --}}
     <div class="other">
       <div class="user-info">
         <div class="text"><a href="/profile/edit">Setting</a></div>
       </div>
-  {{!-- // --}}
+      {{!-- // --}}
       <div class="user-info">
         {{#if istheLogged}}
         <div class="text"><a href="/profile/logout">Logout</a></div>
@@ -56,12 +56,12 @@
           {{#with profileOwner}}
           <div class="profile-card__header all">
             <figure class="profile-card__profile all">
-            {{#if imgPath}}
+              {{#if imgPath}}
               <img src="{{imgPath}}" alt="image">
-            {{else}}
+              {{else}}
               <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Neil_Armstrong.jpg"
-                alt="Short description" /> 
-            {{/if}}
+                alt="Short description" />
+              {{/if}}
             </figure>
           </div>
           <div class="profile-card__body all">
@@ -81,13 +81,13 @@
         {{#if alreadyFollowed}}
         <p>your Outer Spaces are connected.</p>
         {{else}}
-        <form action="/profile/{{profileOwner._id}}/follow" method="POST" >
+        <form action="/profile/{{profileOwner._id}}/follow" method="POST">
           <button type="submit" class="btn btn-sm btn-outline-secondary">follow this person</button>
         </form>
         {{/if}}
       </div>
       {{/if}}
-    {{!-- display profile setting --}}
+      {{!-- display profile setting --}}
       <div class="card">
         {{#with profileOwner}}
         <div class="text">
@@ -99,20 +99,20 @@
         <div class="text">
           <span><i class="fa fa-map"></i></span>From {{this.origin}}
         </div>
-       
-      </div> 
-    {{!-- display following list  --}}
+
+      </div>
+      {{!-- display following list  --}}
       <div class="card">
         <div class="title">Connecting Outer Spaces<span>{{profileOwner.following.length}} outer space</span></div>
-         {{/with}}
+        {{/with}}
         <div class="thumb-wrapper">
-        {{#each profileOwner.following}} 
+          {{#each profileOwner.following}}
           <div class="thumb-unit">
             <div>{{this.username}}</div>
           </div>
-        {{/each}}
+          {{/each}}
         </div>
-      </div> 
+      </div>
     </div>
     <div class="col-50" style="width: 75%;">
       <div class="card status">
@@ -134,14 +134,12 @@
           {{#if postsList}}
           {{#with postsList}}
           {{#each this}}
-          <div class="box">  
+          <div class="box">
             <a class="lightCustom" href="/profile/posts/details/{{_id}}">
-              <div
-                style="background-image: url({{image}});"
-                class="media">
+              <div style="background-image: url({{image}});" class="media">
                 <div class="caption">
-                    <p>{{description}}</p>
-                    <p class="likes-and-comments">Comments {{comments.length}} &middot; Likes {{liked.length}}</p>
+                  <p>{{description}}</p>
+                  <p class="likes-and-comments">Comments {{comments.length}} &middot; Likes {{liked.length}}</p>
                 </div>
               </div>
             </a>
@@ -153,9 +151,9 @@
           {{/if}}
         </section>
       </section>
-      </div>
     </div>
   </div>
+</div>
 </div>
 
 {{!-- //ToDo: display friends list in a popup --}}

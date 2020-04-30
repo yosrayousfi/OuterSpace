@@ -6,3 +6,249 @@
     <input type="text" name="description" id="description">
     <button type="submit">Post</button>
 </form>
+
+
+<style>
+    body {
+        background: url(.././images/APOD.jpg);
+
+    }
+
+    h2 {
+        color: black;
+    }
+</style>
+
+<div class="profileCard">
+    <div class="col-md-20">
+        <form action="/profile/addPost" method="post" class="post-form" style="margin-top: 7em;">
+            <div class="form-group file post_image">
+                <input type="file" class="form-control" name="photo" style="width: 89%; margin-left:2em">
+            </div>
+            <div class="form-group">
+                <label class="control-label string required" for="post_caption">
+                    Caption</label>
+                <textarea class="form-control string" style="width: 89%; margin-left:2em" rows="3" type="text"
+                    name="description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                Upload
+            </button>
+
+        </form>
+        <a href="./profile"><button class="btn btn-default btn-lg btn-block">
+                Cancel
+            </button></a>
+    </div>
+
+</div>
+
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+
+<style>
+    @import "https://fonts.googleapis.com/css?family=Chewy";
+
+    *[class*="-brand"]:not(img) {
+        font-family: "Chewy", cursive;
+        text-transform: capitalize;
+    }
+
+    body {
+        background: #ecf0f1;
+        padding-top: 85px;
+        padding-bottom: 80px;
+    }
+
+    nav#top-nav>.container {
+        max-width: 980px;
+    }
+
+    nav.visible-xs.visible-sm .nav-pills {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    nav.visible-xs.visible-sm .navbar-nav {
+        float: none;
+    }
+
+    nav.visible-xs.visible-sm .navbar-nav li {
+        float: none;
+        display: inline-block;
+        width: 16%;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-brand {
+        display: block;
+        float: none;
+        margin: 0 auto;
+        padding: 15px;
+        text-align: center;
+        line-height: 34px;
+    }
+
+    main.container {
+        padding: 0;
+    }
+
+    nav li {
+        position: relative;
+        z-index: 100;
+    }
+
+    nav li .badge {
+        position: absolute;
+        top: 25%;
+        left: 75%;
+        transform: translate(-75%, -25%);
+        z-index: 110;
+    }
+
+    #top-nav li .badge {
+        font-size: 10px;
+    }
+
+    .post-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .post,
+    .comments,
+    .new-post {
+        margin: 0 auto;
+        max-width: 640px;
+        /*box-shadow: 0 6px 12px rgba(0,0,0,.175);*/
+    }
+
+    .post-list .post {
+        margin: 0 auto 60px auto;
+    }
+
+    article.post,
+    .post-list .post:last-child {
+        margin-bottom: 30px;
+    }
+
+    .post .post-img {
+        min-width: 100%;
+    }
+
+    .post.panel .panel-body {
+        padding: 0;
+    }
+
+    .post.panel .panel-body figcaption.lead {
+        padding: 15px 15px 0 15px;
+    }
+
+    .post.panel footer.panel-footer p {
+        line-height: 22px;
+        margin-bottom: 0;
+    }
+
+    .post-form .post_image {
+        margin-bottom: 15px;
+    }
+
+    .new-post form label>abbr {
+        display: none;
+    }
+
+    .post_image .inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .comments {
+        margin-bottom: 30px;
+    }
+
+    .comments.panel .panel-body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .comment-list .comment {
+        padding: 5px 15px;
+    }
+
+    .comment-list .comment:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+
+    .comment>p {
+        margin-bottom: 0;
+    }
+
+    .comment>footer {
+        font-size: 10px;
+    }
+
+    .comment-expanded {
+        display: none;
+    }
+
+    footer #copyright {
+        font-family: "Chewy", cursive;
+        letter-spacing: 1px;
+    }
+
+    footer #copyright::before {
+        background: #bdc3c7;
+        content: "";
+        display: block;
+        margin: 15px auto;
+        height: 1px;
+        max-width: calc(100% - 60px);
+    }
+
+    /*==========  Mobile First Method  ==========*/
+
+    /* Custom, iPhone Retina */
+
+    @media only screen and (min-width: 320px) {}
+
+    /* Extra Small Devices, Phones */
+
+    @media only screen and (min-width: 480px) {}
+
+    /* Small Devices, Tablets */
+
+    @media only screen and (min-width: 768px) {}
+
+    /* Medium Devices, Desktops */
+
+    @media only screen and (min-width: 992px) {
+        body {
+            padding-bottom: 5px;
+        }
+
+        .navbar-header {
+            float: left;
+        }
+
+        main.container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    /* Large Devices, Wide Screens */
+
+    @media only screen and (min-width: 1200px) {}
+</style>
