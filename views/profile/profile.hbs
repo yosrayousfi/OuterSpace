@@ -106,9 +106,15 @@
          {{/with}}
         <div class="thumb-wrapper">
         {{#each profileOwner.following}} 
-        <div class="profile-unit" style="background-image: url({{this.imgPath}});" >
-          <div class="caption">{{this.username}}</div>
-        </div>
+          {{#if imgPath}}
+            <div class="profile-unit" style="background-image: url({{this.imgPath}});" >
+              <div class="caption">{{this.username}}</div>
+            </div>
+              {{else}}
+              <div class="profile-unit" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1c/Neil_Armstrong.jpg);" >
+              <div class="caption">{{this.username}}</div>
+              </div>
+          {{/if}}
         {{/each}}
         </div>
       </div> 
