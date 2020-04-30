@@ -900,6 +900,8 @@ input {
   color: rgba(250, 250, 250, 0.4);
 }
 
+
+
 /* MODIFIERS */
 .profile-card[data-effect="blur"]:hover .profile-card__image img {
   -webkit-filter: blur(3px);
@@ -1238,6 +1240,7 @@ body {
 
 body {
   background: black;
+  color: whitesmoke
 }
 
 @keyframes flicker {
