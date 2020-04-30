@@ -3,6 +3,9 @@ const router = express.Router();
 const User = require("../models/user");
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+//require cloudinary configuration
+const uploadCloud = require("../config/cloudinary.js");
+
 
 router.get("/logout", (req, res, next) => {
   console.log("lougout rounte found");
@@ -48,6 +51,33 @@ router.post("/addPost", (req, res, next) => {
       next(err);
     });
 });
+//GET user upload profile picture
+router.get("/edit", (req, res, next) => {
+  console.log("edit profile found");
+  res.render("profile/profileEdit");
+});
+//POST user upload profile picture
+router.post("/edit", uploadCloud.single("photo"), (req, res, next) => {
+  
+  const imgPath = req.file.url;
+  const imgName = req.file.originalname;
+
+  req.user.imgPath = req.file.url;
+  req.user.imgName = req.file.originalname;
+  req.user.bio = req.body.bio;
+  req.user.dob = req.body.dob;
+  req.user.origin = req.body.origin;
+
+  req.user.save()
+    .then(user => {
+      console.log(`Success ${user} was added to the database`);
+      res.redirect("/profile/profile");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+//
 router.get("/posts/edit/:id", (req, res) => {
   Post.findById(req.params.id)
     .populate("owner")

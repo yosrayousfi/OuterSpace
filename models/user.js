@@ -12,8 +12,9 @@ const userSchema = new Schema(
     githubId: String,
     firstname: String,
     lastname: String,
-    // bio: String,
-    // dob: String,
+    bio: String,
+    dob: String,
+    origin: String,
     following: [
       {
         type: Schema.Types.ObjectId,
@@ -26,7 +27,8 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
-    profile_pic: String,
+    imgPath: String,
+    imgName: String,
     // chat_rooms:Array,
     // notifications:Array,
   },
