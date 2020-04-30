@@ -1,9 +1,18 @@
+
+
+<div class="post-details bigger">
+
 {{#with post}}
-<form action="/profile/editPost/{{_id}}" method="post">
-  <label for="title">image: </label>
-  <input type="text" name="image" id="image" value="{{image}}">
-  <label for="description">Description: </label>
-  <input type="text" name="description" id="description" value="{{description}}">
-  <button type="submit">Edit a post</button>
+<form class="post-details bigger" action="/profile/editPost/{{_id}}" method="post">
+  <label  for="title">Image </label>
+  <input class="textarea longer" type="text" name="image" id="image" value="{{image}}">
+  <label for="description">Description </label>
+  <input class="textarea longer" type="text" name="description" id="description" value="{{description}}">
+  <button type="submit" class="follow-btn small">Submit the changes</button>
 </form>
 {{/with}}
+<img src="/images/galaxy.jpg" style=background-image: ;>
+</div>
+
+
+
