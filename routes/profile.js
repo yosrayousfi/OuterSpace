@@ -6,7 +6,6 @@ const Comment = require("../models/comment");
 //require cloudinary configuration
 const uploadCloud = require("../config/cloudinary.js");
 
-
 router.get("/logout", (req, res, next) => {
   console.log("lougout rounte found");
   req.logout();
@@ -26,7 +25,7 @@ router.get("/posts/details/:id", (req, res) => {
     })
     .then((post) => {
       console.log(post);
-      res.render("profile/postDetails", { 
+      res.render("profile/postDetails", {
         post: post,
         alreadyLiked: post.liked.includes(req.user._id),
         isLoggedInUser: req.user._id.equals(post.owner),
@@ -54,11 +53,13 @@ router.post("/addPost", (req, res, next) => {
 //GET user upload profile picture
 router.get("/edit", (req, res, next) => {
   console.log("edit profile found");
-  res.render("profile/profileEdit");
+
+  res.render("profile/profileEdit", {
+    profileOwner: req.user,
+  });
 });
 //POST user upload profile picture
 router.post("/edit", uploadCloud.single("photo"), (req, res, next) => {
-  
   const imgPath = req.file.url;
   const imgName = req.file.originalname;
 

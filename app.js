@@ -67,7 +67,7 @@ app.use("/profile", profile);
 app.use("/api", api);
 // app.use("/users", users);
 mongoose
-  .connect("mongodb://localhost/project2", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/project2", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
