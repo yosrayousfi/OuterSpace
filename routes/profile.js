@@ -36,15 +36,18 @@ router.get("/addPost", (req, res, next) => {
   console.log("route found");
   res.render("profile/addPost");
 });
-router.post("/addPost", (req, res, next) => {
+router.post("/addPost", uploadCloud.single("photo"), (req, res, next) => {
+  console.log("photoooooooooooooooo", req.body.photo);
+  console.log("path", req.file);
   Post.create({
-    image: req.body.image,
+    image: req.file ? req.file.url : "",
+    originalname: req.file ? req.file.originalname : "",
     description: req.body.description,
     owner: req.user._id,
   })
     .then((post) => {
-      console.log(post);
-      res.redirect("/profile/profile");
+      //console.log(post);
+      //res.redirect("/profile/profile");
     })
     .catch((err) => {
       next(err);
@@ -63,12 +66,13 @@ router.post("/edit", uploadCloud.single("photo"), (req, res, next) => {
   if (req.file) {
     req.user.imgPath = req.file.url;
     req.user.imgName = req.file.originalname;
-  } 
+  }
   req.user.bio = req.body.bio;
   req.user.dob = req.body.dob;
   req.user.origin = req.body.origin;
-  req.user.save()
-    .then(user => {
+  req.user
+    .save()
+    .then((user) => {
       console.log(`Success ${user} was updated to the database`);
       res.redirect("/profile/profile");
     })
@@ -134,7 +138,11 @@ router.post("/posts/:id/comment", (req, res) => {
         })
         .then((post) => {
           console.log("updated post", post);
-          res.render("profile/postDetails", { post: post });
+          res.render("profile/postDetails", {
+            post: post,
+            alreadyLiked: post.liked.includes(req.user._id),
+            isLoggedInUser: req.user._id.equals(post.owner),
+          });
         });
     })
     .catch((err) => {
@@ -220,21 +228,25 @@ router.post("/share", (req, res, next) => {
 });
 //your own profile
 router.get("/profile", (req, res, next) => {
-  console.log('following!!', req.user.following)
-  User.populate(req.user, {path: "following"})
-    .then(populatedUser => {
-      console.log('populated following!!', populatedUser.following)
-      return Post.find({ owner: req.user._id })
-      //sort by the most recent post
-      .sort({ created_at: -1 })
-      .populate({ path: "owner" })
+  console.log("following!!", req.user.following);
+  User.populate(req.user, { path: "following" })
+    .then((populatedUser) => {
+      console.log("populated following!!", populatedUser.following);
+      return (
+        Post.find({ owner: req.user._id })
+          //sort by the most recent post
+          .sort({ created_at: -1 })
+          .populate({ path: "owner" })
+      );
     })
     .then((posts) => {
+      console.log("here");
       posts.forEach((post) => {
         // replace spaces in URL
         post.image = encodeURI(post.image);
+        console.log("imag", post.image);
       });
-      console.log("populated", posts);
+      // console.log("imag", post.image);
       res.render("profile/profile", {
         postsList: posts,
         profileOwner: req.user,
@@ -250,9 +262,9 @@ router.get("/profile", (req, res, next) => {
 //others profile
 router.get("/:id", (req, res, next) => {
   console.log("id selected", req.params.id);
-  
+
   User.findById(req.params.id)
-    .populate({path: "following"})
+    .populate({ path: "following" })
     .then((user) => {
       console.log("user selected", user);
       Post.find({ owner: req.params.id })

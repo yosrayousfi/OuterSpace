@@ -11,8 +11,8 @@
     <div class="icon"><i class="fa fa-align-left"></i></div>
     <div class="text">outerspace</div>
     {{#if istheLogged}}
-    <div class="text"> <a href="/profile/addPost">New post</a>
-    </div>
+    {{!-- <div class="text"> <a href="/profile/addPost">New post</a>
+    </div> --}}
     <div class="text"> <a href="/profile/search">Friends</a>
     </div>
     {{/if}}
@@ -31,7 +31,7 @@
       <div class="user-info">
         <div class="text"><a href="/profile/edit">Setting</a></div>
       </div>
-  {{!-- // --}}
+      {{!-- // --}}
       <div class="user-info">
         {{#if istheLogged}}
         <div class="text"><a href="/profile/logout">Logout</a></div>
@@ -57,12 +57,12 @@
           {{#with profileOwner}}
           <div class="profile-card__header all">
             <figure class="profile-card__profile all">
-            {{#if imgPath}}
+              {{#if imgPath}}
               <img src="{{imgPath}}" alt="image">
-            {{else}}
+              {{else}}
               <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Neil_Armstrong.jpg"
-                alt="Short description" /> 
-            {{/if}}
+                alt="Short description" />
+              {{/if}}
             </figure>
           </div>
           <div class="profile-card__body all">
@@ -113,7 +113,7 @@
           {{/if}}
         {{/each}}
         </div>
-      </div> 
+      </div>
     </div>
   
 
@@ -138,14 +138,12 @@
           {{#if postsList}}
           {{#with postsList}}
           {{#each this}}
-          <div class="box">  
+          <div class="box">
             <a class="lightCustom" href="/profile/posts/details/{{_id}}">
-              <div
-                style="background-image: url({{image}});"
-                class="media">
+              <div style="background-image: url({{image}});" class="media">
                 <div class="caption">
-                    <p>{{description}}</p>
-                    <p class="likes-and-comments">Comments {{comments.length}} &middot; Likes {{liked.length}}</p>
+                  <p>{{description}}</p>
+                  <p class="likes-and-comments">Comments {{comments.length}} &middot; Likes {{liked.length}}</p>
                 </div>
               </div>
             </a>
@@ -157,7 +155,6 @@
           {{/if}}
         </section>
       </section>
-      </div>
     </div>
   </div>
 </div>

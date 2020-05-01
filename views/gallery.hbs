@@ -3,7 +3,7 @@
 
 <style>
   body {
-    background: url(../images/moonBeer.jpg);
+    background: url(https://images.unsplash.com/photo-1445905595283-21f8ae8a33d2?auto=format&fit=crop&w=1504&q=80);
     background-size: cover;
     background-attachment: fixed;
     overflow-y: scroll
@@ -49,12 +49,12 @@
                     <input name="description" value="{{title}}" hidden>
                     <button type="submit" class="btn btn-sm btn-outline-secondary">share</button>
                   </form>
-                    <form action="/api/galleryDetails" method="POST">
-                  <input name="image" value="{{../links.[0].href}}" hidden>
-                  <input name="title" value="{{title}}" hidden>
-                  <input name="description" value="{{description}}" hidden>
-                  <button type="submit" class="btn btn-sm btn-outline-secondary">Details</button>
-                </form>
+                  <form action="/api/galleryDetails" method="POST">
+                    <input name="image" value="{{../links.[0].href}}" hidden>
+                    <input name="title" value="{{title}}" hidden>
+                    <input name="description" value="{{description}}" hidden>
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">Details</button>
+                  </form>
                 </div>
                 <small class="text-muted">{{date_created}}</small>
               </div>
