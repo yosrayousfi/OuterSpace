@@ -19,7 +19,7 @@ https://outer-space.herokuapp.com/
 ### Setup
 
 0. Open new terminal window and go to OuterSpace repo folder
-1. `npm install`
+1. `$ npm install`
 2. Create a new file called `.env` and add the following content:
 
 ```
