@@ -23,7 +23,7 @@
     "morgan": "^1.9.0",
     "multer": "^1.4.2",
     "multer-storage-cloudinary": "^2.2.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.1",
     "passport-github": "^1.1.0",
